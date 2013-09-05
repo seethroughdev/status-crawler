@@ -30,11 +30,15 @@
   // set exported file location
   config.fileLocation = './logs/';
 
+  // prepend date to filename
+  config.dateFileName = false;
+
   // toggle verbose in command line
   config.verbose = false;
 
   // logging level can be set to: 'debug', 'info', 'warning', 'error'
-  config.logLevel = 'info';
+  config.logLevel = 'error';
+
 
 
 
@@ -42,8 +46,8 @@
 
   // Create Casper
   var casper = require('casper').create({
-        verbose: config.verbose || false,
-        logLevel: config.logLevel || 'error'
+        verbose: casper.cli.get('log-level') || config.verbose,
+        logLevel: casper.cli.get('log-level') || config.logLevel
       });
 
   // Include utilities
