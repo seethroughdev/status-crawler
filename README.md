@@ -1,0 +1,1 @@
+# Spider for CasperJS

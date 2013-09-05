@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+  <title>Justified Nav Template for Bootstrap</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+   .jumbotron {
+    text-align: center;
+    background-color: transparent;
+  }
+  .jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+    background: hsla(66.96, 58.97%, 45.88%, 1.00);
+    border: none;
+    color: white;
+  }
+  body {
+    overflow-y: scroll;
+    line-height: 2em;
+  }
+  .main-content {
+    padding-top: 60px;
+  }
+  .main-content ul {
+    padding: 0;
+    list-style-type: none;
+  }
+  .tab-pane li {
+    padding: 1em;
+    margin: .5em 0;
+  }
+
+  .tab-pane li:nth-of-type(even) {
+    background: #f8f8f8;
+    border-radius: 6px;
+  }
+
+  .tab-pane .label {
+    font-size: 95%;
+    margin-right: 1em;
+  }
+
+  .nav-pills {
+    margin-bottom: 33px;
+  }
+
+  a {
+    font-weight: bold;
+    color: #333;
+  }
+
+  a.list-group-item.active>.badge, .nav-pills>.active>a>.badge {
+    color: #777;
+  }
+
+  h1 {
+    margin-top: 35px;
+    margin-bottom: 30px;
+  }
+
+</style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div id="content">
+      <div class="masthead">
+
+      </div>
+    </div>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron" style="display: none">
+      <h1>Something</h1>
+      <p class="lead">Make sure you've run the casperJS command to generate your spider data!</p>
+      <p><a class="btn btn-lg btn-success" href="#">Show Me How</a></p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <h1>Something</h1>
+        <div class="panel panel-default">
+          <div class="panel-heading">Statistics</div>
+          <ul class="list-group" id="list-stats-container"></ul>
+        </div>
+      </div>
+      <div class="tab-content col-lg-8 col-lg-offset-1 main-content">
+
+        <ul class="nav nav-pills nav-justified">
+          <li class="active">
+            <a class="" data-toggle="tab" href="#response">
+              Response
+              <span class="badge">42</span>
+            </a>
+          </li>
+          <li>
+            <a class="" data-toggle="tab" href="#ssl">
+            SSL
+              <span class="badge">42</span>
+            </a>
+          </li>
+          <li>
+            <a class="" data-toggle="tab" href="#errors">
+              Errors/Warnings<span class="badge">42</span></a>
+          </li>
+          <li>
+            <a class="" data-toggle="tab" href="#health">
+            Health
+              <span class="badge">42</span>
+            </a>
+          </li>
+          <li>
+            <a class="" data-toggle="tab" href="#debug">
+            Debug
+              <span class="badge">42</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="input-group">
+          <input type="text" class="form-control">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+          </span>
+        </div>
+
+        <div class="tab-pane active" id="response">
+          <ul id="response-container"></ul>
+        </div>
+        <div class="tab-pane" id="ssl">
+          <ul id="ssl-container"></ul>
+        </div>
+        <div class="tab-pane" id="errors">
+          <ul id="errors-container"></ul>
+        </div>
+        <div class="tab-pane" id="health">
+          <h3>Coming Soon!</h3>
+          <ul id="health-container"></ul>
+        </div>
+        <div class="tab-pane" id="debug">
+          <ul id="debug-container"></ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Site footer -->
+    <div class="footer">
+      <p>&copy; SurveyMonkey Inc. 2013</p>
+    </div>
+
+  </div> <!-- /container -->
+
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/handlebars.js"></script>
+  <script src="scripts/lodash.min.js"></script>
+  <script src="scripts/sass-bootstrap/js/tab.js"></script>
+
+  <!-- Handlebars Helpers -->
+  <script>
+    // helper to truncate URLs
+    Handlebars.registerHelper('trimString', function(passedString) {
+      var theString = passedString.substring(0,90);
+      return new Handlebars.SafeString(theString)
+    });
+
+    // helper to add class to tables based on response status
+    Handlebars.registerHelper('getStatusClass', function(passedString) {
+      if (passedString === 404 || passedString === 500) {
+        return  new Handlebars.SafeString('danger');
+      } else if (passedString === 301 || passedString === 302) {
+        return  new Handlebars.SafeString('warning');
+      } else if (passedString === 200) {
+        return new Handlebars.SafeString('success');
+      } else {
+        return;
+      };
+    });
+  </script>
+
+  <!-- Handlebars Templates -->
+
+  <script type="text/x-handlebars-template" id="list-stats-template">
+    <li class="list-group-item">URLs Crawled - <strong>{{links.length}}</strong></li>
+    <li class="list-group-item">URLs Skipped - <strong>{{skippedLinksCount}}</strong></li>
+    <li class="list-group-item">Skipped Values
+      <ul>
+        {{#each skippedValues}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </li>
+    <li class="list-group-item">Required Values
+      <ul>
+        {{#each requiredValues}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </li>
+  </script>
+
+  <script type="text/x-handlebars-template" id="response-template">
+    {{#each this}}
+    <li>
+      <span class="label label-{{{getStatusClass this.status}}}">{{this.status}}</span>
+      <a href="{{this.url}}" target="_blank">{{{this.url}}}</a>
+    </li>
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars-template" id="ssl-template">
+    {{#each this}}
+    <li>
+
+      <a href="{{this.url}}" target="_blank">{{{this.url}}}</a>
+      <p><span class="label label-warning pull-left" style="font-size: 1.5em; padding: .5em"><span class="glyphicon glyphicon-lock"></span></span>{{this.msg}}</p>
+    </li>
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars-template" id="errors-template">
+    {{#each errors}}
+    <li>
+      <ul>
+        <li>File: <a href="{{this.file}}" target="_blank">{{this.file}}</a></li>
+        <li>Message: {{this.msg}}</li>
+        <li>Line: {{this.line}}</li>
+        {{#if func}}<li>Function: {{func}}</li>{{/if}}
+      </ul>
+    </li>
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars-template" id="debug-template">
+    {{#each links}}
+    <li>
+      <span class="label label-{{{getStatusClass this.status}}}">{{this.status}}</span>
+      <a href="{{this.url}}" target="_blank">{{{this.url}}}</a>
+    </li>
+    {{/each}}
+  </script>
+
+  <script>
+
+    (function(window,document,undefined){
+
+      var handleTemplates = function(data) {
+
+        // data filtering
+        var responseData = _.filter(data.links, function(value) {
+          return value.status !== null && value.status !== 200;
+        });
+
+        var sslData = _.filter(data.messages, function(value) {
+          var insecure = "insecure content";
+          return value.msg.indexOf(insecure) !== -1;
+        });
+
+
+        // apply list stats
+        var listStatsTemplate = $("#list-stats-template").html();
+        var listStats = Handlebars.compile(listStatsTemplate);
+        $('#list-stats-container').html(listStats(data));
+
+        // apply parsed links
+        var responseTemplate = $("#response-template").html();
+        var response = Handlebars.compile(responseTemplate);
+        $('#response-container').html(response(responseData));
+
+        // apply ssl
+        var sslTemplate = $("#ssl-template").html();
+        var ssl = Handlebars.compile(sslTemplate);
+        $('#ssl-container').html(ssl(sslData));
+
+        // apply errors
+        var errorsTemplate = $("#errors-template").html();
+        var errors = Handlebars.compile(errorsTemplate);
+        $('#errors-container').html(errors(data));
+
+        // apply debug
+        var debugTemplate = $("#debug-template").html();
+        var debug = Handlebars.compile(debugTemplate);
+        $('#debug-container').html(debug(data));
+      };
+
+      var getJsonPromise = $.getJSON('logs/data.json');
+
+      getJsonPromise.then(function(response) {
+        dataObj = response;
+        return dataObj;
+      })
+
+      getJsonPromise
+      .done(function(response) {
+        handleTemplates(response);
+        window.console.log('SUCCESS: loaded json data');
+      })
+      .fail(function() {
+        $('.jumbotron').show();
+        $('.main-content').hide();
+        window.console.log('ERROR: didnt get json, maybe you forgot to run casperjs?');
+      });
+    })(this, this.document);
+
+  </script>
+
+</body>
+</html>
