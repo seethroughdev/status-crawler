@@ -19,7 +19,16 @@
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'http://wufoo.com/';
+  config.startUrl = 'http://localhost:8888/';
+
+  // words to require for all urls ** put your upperdomain here if you want to keep it local **
+  config.requiredValues = 'localhost';
+
+  // add any words that spider should skip
+  config.skippedValues = 'mailto, #, install, forums, download, comment';
+
+  // set exported file location
+  config.fileLocation = './logs/';
 
   // toggle verbose in command line
   config.verbose = false;
@@ -27,14 +36,6 @@
   // logging level can be set to: 'debug', 'info', 'warning', 'error'
   config.logLevel = 'info';
 
-  // add any words that spider should skip
-  config.skippedValues = 'mailto, #, signup, forums, download, comment';
-
-  // words to require for all urls ** put your upperdomain here if you want to keep it local **
-  config.requiredValues = 'wufoo, about';
-
-  // set exported file location
-  config.fileLocation = './logs/';
 
 
   // ##################  WORKING CODE  #################
