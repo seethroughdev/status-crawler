@@ -1,6 +1,6 @@
 /*
  * casperjs-spider v 0.5.0
- * http://adamin.net/
+ * https://github.com/pensive612/casperjs-spider
  *
  * Copyright (c) 2013 Adamin
  * Licensed under the MIT license.
