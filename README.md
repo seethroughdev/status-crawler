@@ -29,15 +29,15 @@ There are several configuration options in casperjs-spider.  You can set them in
 
 **start-url** *\*required*
 
+- Also defined as config.startUrl in spider.js.  This is the starting URL for your spider to crawl.
 - ```--start-url=http://espn.com```
 - ```config.startUrl = 'http://espn.com';```
-- Also defined as config.startUrl in spider.js.  This is the starting URL for your spider to crawl.
 
 **required-values** *\*required*
 
+- Also defined as config.requiredValues in spider.js.  This is a comma-separated list of all required strings.
 - ```--required-values=espn.com```
 - ```config.requiredValues = 'espn.com';```
-- Also defined as config.requiredValues in spider.js.  This is a comma-separated list of all required strings.
 - This field intentionally defaults to localhost, because you need to use it to spider correctly.
 - *Make sure you put your top-level domain in here to keep from spidering the internet!*
 - Leave off the protocol to allow for subdomains if you have them.
@@ -45,33 +45,33 @@ There are several configuration options in casperjs-spider.  You can set them in
 **skipped-values**
 
 - Also defined as config.skippedValues in spider.js.  This is a comma-separated list of all skipped strings.
+- *It might be helpful to skip URLs like mailto, install, forums, blogs etc...*
 - ```--skipped-values=mailto,install,#,blog/,comment```
 - ```config.skippedValues = 'mailto,install,#,blog/,comment';```
-- *It might be helpful to skip URLs like mailto, install, forums, blogs etc...*
 
 **file-location** *default=./logs/*
 
+- Also defined as config.fileLocation in spider.js.  This is a path to where you want the data.json file to be saved.
 - ```--file-location=./logs/```
 - ```config.fileLocation = './logs/';```
-- Also defined as config.fileLocation in spider.js.  This is a path to where you want the data.json file to be saved.
 
 **date-file-name** *default=false*
 
+- Also defined as config.dateFileName in spider.js.  This is a boolean to replace the filename data.json with the current date.  ie.  2013-12-22.json.  In case you want to keep versions.
 - ```--date-file-name=false```
 - ```config.dateFileName = false;```
-- Also defined as config.dateFileName in spider.js.  This is a boolean to replace the filename data.json with the current date.  ie.  2013-12-22.json.  In case you want to keep versions.
 
 **verbose** *default=false*
 
+- Also defined as config.verbose in spider.js.  This is a boolean to put casper into verbose mode.
 - ```--verbose=false```
 - ```config.verbose = false;```
-- Also defined as config.verbose in spider.js.  This is a boolean to put casper into verbose mode.
 
 **log-level** *default=error*
 
+- Also defined as config.logLevel in spider.js.  SpiderJS allows you to set a logging level. can be [error, warning, info, debug]
 - ```--log-level=error```
 - ```config.logLevel = 'error';```
-- Also defined as config.logLevel in spider.js.  SpiderJS allows you to set a logging level. can be [error, warning, info, debug]
 
 ### Conclusion
 
