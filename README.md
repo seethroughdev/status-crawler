@@ -1,9 +1,7 @@
 # Spider for CasperJS
 
 As you probably already know.  [casperJS](http://casperjs.org/) is an awesome library
-that wraps an api around the equally as awesome, [phantomJS](http://phantomjs.org/).
-
-They make scripting inside web pages on a real browser easy.
+that wraps around the equally awesome, [phantomJS](http://phantomjs.org/).
 
 This script will crawl your site and log all urls, response codes, errors and warnings to a json file for parsing.
 
@@ -15,11 +13,11 @@ You can run the whole thing by setting your config options in spider.js and navi
 
 ``` casperjs spider.js```
 
-Or you can pass arguments directly in from the command line like so:
+Or you can pass arguments directly into the command line like this:
 
-``` casperjs --start=http://espn.com --required-values=espn.com,nfl,fantasy spider.js ```
+``` casperjs --start-url=http://espn.com --required-values=espn.com,nfl,fantasy spider.js ```
 
-*Casper go in the middle, and they will override config options in the script themselves*
+*Casper arguments go in the middle, and they will override config options in the script themselves*
 
 ### Config Options
 
