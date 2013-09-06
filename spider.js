@@ -19,7 +19,7 @@
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'http://localhost:8888/';
+  config.startUrl = 'http://localhost:3000/';
 
   // words to require for all urls ** put your top domain here to keep it local **
   config.requiredValues = 'localhost';
@@ -37,18 +37,16 @@
   config.verbose = false;
 
   // logging level can be set to: 'debug', 'info', 'warning', 'error'
-  config.logLevel = 'error';
-
-
+  config.logLevel = 'debug';
 
 
   // ##################  WORKING CODE  #################
 
   // Create Casper
   var casper = require('casper').create({
-        verbose: casper.cli.get('log-level') || config.verbose,
-        logLevel: casper.cli.get('log-level') || config.logLevel
-      });
+    verbose: config.verbose,
+    logLevel: config.logLevel
+  });
 
   // Include utilities
   var utils   = require('utils'),
@@ -68,7 +66,7 @@
 
   // Initializing Data Object
   var dataObj = {
-    start: casper.cli.get('url') || config.startUrl,
+    start: casper.cli.get('start-url') || config.startUrl,
     date: new Date(),
     requiredValues: [],
     skippedValues: [],
@@ -188,7 +186,7 @@
 
 
   // Start Spidering!
-  casper.start(config.startUrl, function() {
+  casper.start(dataObj.start, function() {
     this.log('Starting to spider ' + dataObj.start, 'info');
     spider(dataObj.start);
   });
@@ -231,11 +229,11 @@
 
   // after crawl is complete, write json file with results
   casper.on('run.complete', function() {
-    var fileLocation = casper.cli.get('fileLocation') || config.fileLocation;
+    var fileLocation = casper.cli.get('file-location') || config.fileLocation;
     var filename;
 
     // set filename for logging
-    if (casper.cli.get('dateFileName')) {
+    if (casper.cli.get('date-file-name')) {
       filename = helpers.getFilename(fileLocation);
     } else {
       filename = fileLocation + 'data.json';
