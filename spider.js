@@ -21,7 +21,7 @@
   // Set starting point for crawl
   config.startUrl = 'http://localhost:8888/';
 
-  // words to require for all urls ** put your upperdomain here if you want to keep it local **
+  // words to require for all urls ** put your top domain here to keep it local **
   config.requiredValues = 'localhost';
 
   // add any words that spider should skip
@@ -61,6 +61,10 @@
 
   // URL arrays
   var visitedUrls = [], pendingUrls = [], skippedUrls = [];
+
+  // required and skipped values
+  var requiredValues = casper.cli.get('required-values') || config.requiredValues;
+  var skippedValues = casper.cli.get('skipped-values') || config.skippedValues;
 
   // Initializing Data Object
   var dataObj = {
@@ -122,13 +126,13 @@
 
       // Create arrays for skipped and required values
 
-      if (config.skippedValues) {
-        var skippedValuesArr = helpers.prepareArr(config.skippedValues);
+      if (skippedValues) {
+        var skippedValuesArr = helpers.prepareArr(skippedValues);
         dataObj.skippedValues = skippedValuesArr;
       }
 
-      if (config.requiredValues) {
-        var requiredValuesArr = helpers.prepareArr(config.requiredValues);
+      if (requiredValues) {
+        var requiredValuesArr = helpers.prepareArr(requiredValues);
         dataObj.requiredValues = requiredValuesArr;
       }
 
