@@ -30,7 +30,7 @@ Or you can pass arguments directly into the command line like this:
 
 ``` casperjs --start-url=http://espn.com --required-values=espn.com,nfl,fantasy spider.js ```
 
-*Casper arguments go in the middle, and they will override config options in the script themselves*
+*Casper arguments go in the middle, and they will override config options in the script.*
 
 ### Config Options
 
@@ -49,15 +49,14 @@ There are several configuration options in casperjs-spider.  You can set them in
 - Also defined as config.requiredValues in spider.js.  This is a comma-separated list of all required strings.
 - ```--required-values=espn.com```
 - ```config.requiredValues = 'espn.com';```
-- This field intentionally defaults to localhost, because you need to use it to spider correctly.
 - *Make sure you put your top-level domain in here to keep from spidering the internet!*
-- Leave off the protocol to allow for subdomains if you have them.
+- Leave off the protocol so it will allow for subdomains if you have them.
 
 **skipped-values**
 
 - Also defined as config.skippedValues in spider.js.  This is a comma-separated list of all skipped strings.
 - *It might be helpful to skip URLs like mailto, install, forums, blogs etc...*
-- ```--skipped-values=mailto,install,#,blog/,comment```
+- ```--skipped-values=mailto,install,\#,blog/,comment```
 - ```config.skippedValues = 'mailto,install,#,blog/,comment';```
 
 **file-location** *default=./logs/*
@@ -89,5 +88,3 @@ There are several configuration options in casperjs-spider.  You can set them in
 That's about it!  Feel free to edit for yourself, or send a pull-request with an improvement.
 
 This script wouldn't be possible without [PlanZero](http://planzero.org/blog/2013/03/07/spidering_the_web_with_casperjs) whose script I started with in the very beginning.  I highly recommend still checking it out for a bare-bones version.
-
-Oh, and please only use this for good. :}
