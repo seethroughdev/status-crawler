@@ -37,7 +37,7 @@
   config.verbose = false;
 
   // logging level can be set to: 'debug', 'info', 'warning', 'error'
-  config.logLevel = 'debug';
+  config.logLevel = 'error';
 
 
   // ##################  WORKING CODE  #################
@@ -53,6 +53,7 @@
       helpers = require('./helpers'),
       fs      = require('fs');
 
+  // Echo options hash to screen
   utils.dump(casper.cli.options);
 
   // ##################  Initializing Vars  #################
