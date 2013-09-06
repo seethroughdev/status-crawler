@@ -17,7 +17,7 @@ You can run the whole thing by setting your config options in spider.js and navi
 
 Or you can pass arguments directly in from the command line like so:
 
-``` casperjs --start=http://espn.com --requiredValue=espn.com,nfl,fantasy spider.js ```
+``` casperjs --start=http://espn.com --required-values=espn.com,nfl,fantasy spider.js ```
 
 *Casper go in the middle, and they will override config options in the script themselves*
 
