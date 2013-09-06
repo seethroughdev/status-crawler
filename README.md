@@ -7,6 +7,19 @@ This script will crawl your site and log all urls, response codes, errors and wa
 
 --------
 
+### What casperjs-spider does
+
+- Spiders whatever site you want it to
+- Returns list of:
+  - all links with response codes
+  - all javascript errors from console
+  - all ssl insecure warnings
+  - all warning messages
+- Does not repeat URLs
+- Allows you to skip specified terms
+- Allows you to require specified terms
+- Exports a data.json file with your results
+
 ### Getting Started
 
 You can run the whole thing by setting your config options in spider.js and navigating to the folder in your CL and typing:
