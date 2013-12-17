@@ -1,8 +1,8 @@
 /*
- * casperjs-spider v 0.5.0
- * https://github.com/pensive612/casperjs-spider
+ * casperjs-spider v 0.5.1
+ * https://github.com/seethroughtrees/casperjs-spider
  *
- * Copyright (c) 2013 Adamin
+ * Copyright (c) 2014 @seethroughtrees
  * Licensed under the MIT license.
  *
  * script inspired and borrowed from: PlanZero, Yaffle, CasperJS, MDN
@@ -39,13 +39,23 @@
   // logging level can be set to: 'debug', 'info', 'warning', 'error'
   config.logLevel = 'error';
 
+  // prevent loading images in crawler
+  config.loadImages = false;
+
+  // prevent loading Flash, Silverlight from crawler
+  config.loadPlugins = false;
+
 
   // ##################  WORKING CODE  #################
 
   // Create Casper
   var casper = require('casper').create({
     verbose: config.verbose,
-    logLevel: config.logLevel
+    logLevel: config.logLevel,
+    pageSettings: {
+      loadImages: config.loadImages,
+      loadPlugins: config.loadPlugins
+    }
   });
 
   // Include utilities
