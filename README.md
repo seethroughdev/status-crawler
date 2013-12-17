@@ -89,7 +89,7 @@ There are several configuration options in casperjs-spider.  You can set them in
 - ```--load-images=false```
 - ```config.loadImages = 'false';```
 
-**load-images** *default=false*
+**load-plugins** *default=false*
 
 - Also defined as config.loadPlugins in spider.js.  SpiderJS allows you to disable plugins from loading in the crawler.  This speeds up the crawl, and is generally not necessary for output.
 - ```--load-plugins=false```
