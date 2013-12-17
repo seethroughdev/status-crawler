@@ -83,8 +83,22 @@ There are several configuration options in casperjs-spider.  You can set them in
 - ```--log-level=error```
 - ```config.logLevel = 'error';```
 
+**load-images** *default=false*
+
+- Also defined as config.loadImages in spider.js.  SpiderJS allows you to disable images from loading in the crawler.  This speeds up the crawl, and is generally not necessary for output.
+- ```--load-images=false```
+- ```config.loadImages = 'false';```
+
+**load-images** *default=false*
+
+- Also defined as config.loadPlugins in spider.js.  SpiderJS allows you to disable plugins from loading in the crawler.  This speeds up the crawl, and is generally not necessary for output.
+- ```--load-plugins=false```
+- ```config.loadPlugins = 'false';```
+
+
+
 ### Conclusion
 
-That's about it!  Feel free to edit for yourself, or send a pull-request with an improvement.
+Feel free to edit for yourself, or send a pull-request with any improvements.
 
 This script wouldn't be possible without [PlanZero](http://planzero.org/blog/2013/03/07/spidering_the_web_with_casperjs) whose script I started with in the very beginning.  I highly recommend still checking it out for a bare-bones version.
