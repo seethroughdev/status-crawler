@@ -1,10 +1,10 @@
-* Fully refactored and tested with Casper 1.0.x and 1.1.x beta.
-Please note the compatibility change for casperjs/phantomjs in their docs *
+*Fully refactored and tested with Casper 1.0.x and 1.1.x beta.
+Please note the compatibility change for casperjs/phantomjs in their docs*
 
 # Spider for CasperJS
 
-As you probably already know.  [casperJS](http://casperjs.org/) is an awesome library
-that wraps around the equally awesome, [phantomJS](http://phantomjs.org/).
+As you probably already know.  [casperJS](http://casperjs.org/) is a library
+that wraps around, [phantomJS](http://phantomjs.org/).
 
 This script will crawl your site and log all urls, response codes, errors and warnings to a json file for parsing.
 
@@ -107,8 +107,10 @@ There are several configuration options in casperjs-spider.  You can set them in
 
 
 
-### Conclusion
+### Contributing
 
 Feel free to edit for yourself, or send a pull-request with any improvements.
+
+**Any pull-requests should be pulled from master and sent to separate branch prefixed with incoming-.**
 
 This script wouldn't be possible without [PlanZero](http://planzero.org/blog/2013/03/07/spidering_the_web_with_casperjs) whose script I started with in the very beginning.  I highly recommend still checking it out for a bare-bones version.
