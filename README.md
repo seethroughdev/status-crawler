@@ -29,11 +29,11 @@ Configure the script by setting your config options in config.js or passing argu
 
 Using config.js settings:
 
-``` casperjs spider.js```
+``` casperjs spider.js // where spider.js is the path to spider.js```
 
 Configuring with arguments:
 
-``` casperjs --start-url=http://example.com --required-values=example.com ```
+``` casperjs --start-url=http://example.com --required-values=example.com spider.js ```
 
 *Casper arguments go in the middle, and they will override config options in the script.*
 
