@@ -31,7 +31,7 @@ You can run the whole thing by setting your config options in config.js and navi
 
 Or you can pass arguments directly into the command line like this:
 
-``` casperjs --start-url=http://espn.go.com --required-values=espn.go.com,nfl,fantasy spider.js ```
+``` casperjs --start-url=http://example.com --required-values=example.com ```
 
 *Casper arguments go in the middle, and they will override config options in the script.*
 
@@ -44,14 +44,14 @@ There are several configuration options in casperjs-spider.  You can set them in
 **start-url** *\*required*
 
 - Also defined as config.startUrl in config.js.  This is the starting URL for your spider to crawl.
-- ```--start-url=http://espn.go.com```
-- ```config.startUrl = 'http://espn.go.com';```
+- ```--start-url=http://example.com```
+- ```config.startUrl = 'http://example.com';```
 
 **required-values** *\*required*
 
 - Also defined as config.requiredValues in config.js.  This is a comma-separated list of all required strings.
-- ```--required-values=espn.go.com```
-- ```config.requiredValues = 'espn.go.com';```
+- ```--required-values=example.com```
+- ```config.requiredValues = 'example.com';```
 - *Make sure you put your top-level domain in here to keep from spidering the internet!*
 - Leave off the protocol so it will allow for subdomains if you have them.
 

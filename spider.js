@@ -26,7 +26,7 @@
     verbose: config.verbose,
     logLevel: config.logLevel,
     pageSettings: {
-      loadImages: false,
+      loadImages: config.loadImages,
       loadPlugins: config.loadPlugins
     }
   });

@@ -6,10 +6,10 @@ var config = (function(window,document,undefined){
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'http://www.wufoo.com/';
+  config.startUrl = 'http://example.com';
 
   // words to require for all urls ** put your top domain here to keep it local **
-  config.requiredValues = 'http://www.wufoo.com/';
+  config.requiredValues = 'example.com';
 
   // add any words that spider should skip
   config.skippedValues = 'vote, user, comment, forum';
@@ -26,11 +26,14 @@ var config = (function(window,document,undefined){
   // logging level can be set to: 'debug', 'info', 'warning', 'error'
   config.logLevel = 'error';
 
+  // prevent loading of images for speed
+  config.loadImages = false;
+
   // prevent loading Flash, Silverlight from crawler
   config.loadPlugins = false;
 
   // set limit for links logged (Enter 0 for unlimited.)
-  config.limit = 25;
+  config.limit = 0;
 
 
   return config;
