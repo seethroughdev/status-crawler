@@ -43,7 +43,7 @@ In your terminal, navigate to the folder containing the spider.js file.
 
 There are several configuration options in casperjs-spider.  You can set them individually in the command line, or by editing the config portion of [spider.js](https://github.com/pensive612/casperjs-spider/blob/master/spider.js).
 
-*It might help to refer to the default config options in the top of [spider.js](https://github.com/pensive612/casperjs-spider/blob/master/spider.js) for examples*
+*It might help to refer to the default config options in [config.js](https://github.com/pensive612/casperjs-spider/blob/master/config.js) for examples*
 
 **start-url** *\*required*
 
