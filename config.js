@@ -12,7 +12,7 @@ var config = (function(window,document,undefined){
   config.requiredValues = 'example.com';
 
   // add any words that spider should skip
-  config.skippedValues = 'vote, user, comment, forum';
+  config.skippedValues = '';
 
   // set exported file location
   config.fileLocation = './logs/';
