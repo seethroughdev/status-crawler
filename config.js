@@ -11,8 +11,8 @@ var config = (function(window,document,undefined){
   // words to require for all urls ** put your top domain here to keep it local **
   config.requiredValues = 'example.com';
 
-  // add any words that spider should skip
-  config.skippedValues = '';
+  // add any words that spider should skip (comma or space separated)
+  config.skippedValues = 'default';
 
   // set exported file location
   config.fileLocation = './logs/';
