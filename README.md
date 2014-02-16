@@ -25,11 +25,16 @@ This script will crawl your site and log all urls, response codes, errors and wa
 
 ### Getting Started
 
-You can run the whole thing by setting your config options in config.js and navigating to the folder in your command line and typing:
+Make sure you have [casperJS](http://casperjs.org/) and [phantomJS](http://phantomjs.org/) installed.
+
+
+Configure the script by setting your config options in config.js or passing arguments in the command line.
+
+Using config.js settings:
 
 ``` casperjs spider.js```
 
-Or you can pass arguments directly into the command line like this:
+Configuring with arguments:
 
 ``` casperjs --start-url=http://example.com --required-values=example.com ```
 
