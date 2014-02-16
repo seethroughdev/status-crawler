@@ -6,13 +6,13 @@ var config = (function(window,document,undefined){
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'https://news.ycombinator.com/';
+  config.startUrl = 'http://espn.go.com/';
 
   // words to require for all urls ** put your top domain here to keep it local **
-  config.requiredValues = 'ycombinator';
+  config.requiredValues = 'http://espn.go.com/, nba';
 
   // add any words that spider should skip
-  config.skippedValues = 'vote, user';
+  config.skippedValues = 'vote, user, comment, forum';
 
   // set exported file location
   config.fileLocation = './logs/';
@@ -26,11 +26,11 @@ var config = (function(window,document,undefined){
   // logging level can be set to: 'debug', 'info', 'warning', 'error'
   config.logLevel = 'error';
 
-  // prevent loading images in crawler
-  config.loadImages = false;
-
   // prevent loading Flash, Silverlight from crawler
   config.loadPlugins = false;
+
+  // set limit for links logged (Enter 0 for unlimited.)
+  config.limit = 100;
 
 
   return config;

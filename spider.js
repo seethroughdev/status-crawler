@@ -24,11 +24,8 @@
   var casper = require('casper').create({
     verbose: config.verbose,
     logLevel: config.logLevel,
-    clientScripts:  [
-      'node_modules/lodash/dist/lodash.min.js'
-    ],
     pageSettings: {
-      loadImages: config.loadImages,
+      loadImages: false,
       loadPlugins: config.loadPlugins
     }
   });
@@ -47,8 +44,15 @@
   var visitedUrls = [], pendingUrls = [], skippedUrls = [];
 
   // required and skipped values
-  var requiredValues = casper.cli.get('required-values') || config.requiredValues;
-  var skippedValues = casper.cli.get('skipped-values') || config.skippedValues;
+  var requiredValues = casper.cli.get('required-values') || config.requiredValues,
+      skippedValues = casper.cli.get('skipped-values') || config.skippedValues,
+      linkLimit     = casper.cli.get('limit') || config.limit;
+
+
+  // setting hard value for linkLimit so it doesn't go on forever
+  if (linkLimit === 0) {
+    linkLimit = 10000;
+  }
 
 
   // Initializing Data Object
@@ -61,7 +65,8 @@
     errors: [],
     messages: [],
     skippedLinksCount: 0,
-    logFile: ''
+    logFile: '',
+    linkCount: 1
   };
 
 
@@ -144,8 +149,9 @@
       }); // eof each links
 
       // If there are any more URLs, run again.
-      if (pendingUrls.length > 0) {
+      if (pendingUrls.length > 0 && dataObj.linkCount < linkLimit) {
         var nextUrl = pendingUrls.shift();
+        dataObj.linkCount++;
         spider(nextUrl);
       } else {
         casper.log('There are no more URLs to be processed!', 'Warning');
@@ -196,27 +202,27 @@
     this.die('Crawl stopped because of errors.');
   });
 
-  // // after crawl is complete, write json file with results
-  // casper.on('run.complete', function() {
-  //   var fileLocation = casper.cli.get('file-location') || config.fileLocation;
-  //   var filename;
+  // after crawl is complete, write json file with results
+  casper.on('run.complete', function() {
+    var fileLocation = casper.cli.get('file-location') || config.fileLocation;
+    var filename;
 
-  //   // set filename for logging
-  //   if (casper.cli.get('date-file-name')) {
-  //     filename = helpers.getFilename(fileLocation);
-  //   } else {
-  //     filename = fileLocation + 'data.json';
-  //   }
+    // set filename for logging
+    if (casper.cli.get('date-file-name')) {
+      filename = helpers.getFilename(fileLocation);
+    } else {
+      filename = fileLocation + 'data.json';
+    }
 
-  //   dataObj.logFile = filename;
+    dataObj.logFile = filename;
 
-  //   dataObj = JSON.stringify(dataObj);
+    var data = JSON.stringify(dataObj);
 
-  //   // write json file
-  //   fs.write(filename, dataObj, 'w');
+    // write json file
+    fs.write(filename, data, 'w');
 
-  //   this.echo('Crawl has completed!', 'INFO');
-  //   this.echo('Data file can be found at ' + filename + '.', 'INFO');
-  // });
+    this.echo('Crawl has completed!', 'INFO');
+    this.echo('Data file can be found at ' + filename + '.', 'INFO');
+  });
 
 })(this, this.document);
