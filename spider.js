@@ -14,7 +14,8 @@
   'use strict';
 
   // import config
-  var config = require('./config');
+  var config  = require('./config'),
+      _       = require('lodash');
 
 
   // ##################  WORKING CODE  #################
@@ -23,6 +24,9 @@
   var casper = require('casper').create({
     verbose: config.verbose,
     logLevel: config.logLevel,
+    clientScripts:  [
+      'node_modules/lodash/dist/lodash.min.js'
+    ],
     pageSettings: {
       loadImages: config.loadImages,
       loadPlugins: config.loadPlugins
@@ -46,12 +50,13 @@
   var requiredValues = casper.cli.get('required-values') || config.requiredValues;
   var skippedValues = casper.cli.get('skipped-values') || config.skippedValues;
 
+
   // Initializing Data Object
   var dataObj = {
     start: casper.cli.get('start-url') || config.startUrl,
     date: new Date(),
-    requiredValues: [],
-    skippedValues: [],
+    requiredValues: helpers.prepareArr(requiredValues),
+    skippedValues: helpers.prepareArr(skippedValues),
     links: [],
     errors: [],
     messages: [],
@@ -59,8 +64,6 @@
     logFile: ''
   };
 
-  // Add Extra Methods in case no browser support
-  helpers.addArrayMethods();
 
   // ##################  Spider Function  #################
 
@@ -97,30 +100,18 @@
       // Find links on the current page
       var localLinks = this.evaluate(function() {
         var links = [];
-        Array.prototype.forEach.call(__utils__.findAll('a[href]'), function(e) {
+        __utils__.findAll('a[href]').forEach(function(e) {
           links.push(e.getAttribute('href'));
         });
-
         return links;
       });
 
-      // Create arrays for skipped and required values
-
-      if (skippedValues) {
-        var skippedValuesArr = helpers.prepareArr(skippedValues);
-        dataObj.skippedValues = skippedValuesArr;
-      }
-
-      if (requiredValues) {
-        var requiredValuesArr = helpers.prepareArr(requiredValues);
-        dataObj.requiredValues = requiredValuesArr;
-      }
-
+      // iterate through each localLink
       this.each(localLinks, function(self, link) {
 
         // if url contains text
         var containsText = function (element, index, array) {
-          return (newUrl.indexOf(array[index]) === -1);
+          return (newUrl.indexOf(array[index]) >= 0);
         };
 
         // Get new url
@@ -131,12 +122,9 @@
             visitedUrls.indexOf(newUrl) === -1 &&
             skippedUrls.indexOf(newUrl) === -1) {
 
-          // Make sure url doesn't contain ANY skipped and DOES contain required
-          var skippedValuesPassed = !!skippedValuesArr.every(containsText);
-          var requiredValuesPassed = !requiredValuesArr.some(containsText);
-
           // if newUrl is not does not contain skipped, and does have required
-          if (skippedValuesPassed && requiredValuesPassed) {
+          if (!dataObj.skippedValues.some(containsText) &&
+              dataObj.requiredValues.every(containsText)) {
 
             pendingUrls.push(newUrl);
 
@@ -151,8 +139,7 @@
             dataObj.skippedLinksCount++;
 
             return;
-
-          } // eof skipped or passed
+          }
         } // eof visited, pending, skipped
       }); // eof each links
 
@@ -209,27 +196,27 @@
     this.die('Crawl stopped because of errors.');
   });
 
-  // after crawl is complete, write json file with results
-  casper.on('run.complete', function() {
-    var fileLocation = casper.cli.get('file-location') || config.fileLocation;
-    var filename;
+  // // after crawl is complete, write json file with results
+  // casper.on('run.complete', function() {
+  //   var fileLocation = casper.cli.get('file-location') || config.fileLocation;
+  //   var filename;
 
-    // set filename for logging
-    if (casper.cli.get('date-file-name')) {
-      filename = helpers.getFilename(fileLocation);
-    } else {
-      filename = fileLocation + 'data.json';
-    }
+  //   // set filename for logging
+  //   if (casper.cli.get('date-file-name')) {
+  //     filename = helpers.getFilename(fileLocation);
+  //   } else {
+  //     filename = fileLocation + 'data.json';
+  //   }
 
-    dataObj.logFile = filename;
+  //   dataObj.logFile = filename;
 
-    dataObj = JSON.stringify(dataObj);
+  //   dataObj = JSON.stringify(dataObj);
 
-    // write json file
-    fs.write(filename, dataObj, 'w');
+  //   // write json file
+  //   fs.write(filename, dataObj, 'w');
 
-    this.echo('Crawl has completed!', 'INFO');
-    this.echo('Data file can be found at ' + filename + '.', 'INFO');
-  });
+  //   this.echo('Crawl has completed!', 'INFO');
+  //   this.echo('Data file can be found at ' + filename + '.', 'INFO');
+  // });
 
 })(this, this.document);
