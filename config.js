@@ -6,10 +6,10 @@ var config = (function(window,document,undefined){
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'http://espn.go.com/';
+  config.startUrl = 'http://www.wufoo.com/';
 
   // words to require for all urls ** put your top domain here to keep it local **
-  config.requiredValues = 'http://espn.go.com/, nba';
+  config.requiredValues = 'http://www.wufoo.com/';
 
   // add any words that spider should skip
   config.skippedValues = 'vote, user, comment, forum';
@@ -30,7 +30,7 @@ var config = (function(window,document,undefined){
   config.loadPlugins = false;
 
   // set limit for links logged (Enter 0 for unlimited.)
-  config.limit = 100;
+  config.limit = 25;
 
 
   return config;

@@ -13,9 +13,10 @@
 (function(window,document,undefined){
   'use strict';
 
-  // import config
-  var config  = require('./config'),
-      _       = require('lodash');
+  var utils   = require('utils'),
+      helpers = require('./helpers'),
+      fs      = require('fs'),
+      config  = require('./config');
 
 
   // ##################  WORKING CODE  #################
@@ -29,11 +30,6 @@
       loadPlugins: config.loadPlugins
     }
   });
-
-  // Include utilities
-  var utils   = require('utils'),
-      helpers = require('./helpers'),
-      fs      = require('fs');
 
   // Echo options hash to screen
   utils.dump(casper.cli.options);
