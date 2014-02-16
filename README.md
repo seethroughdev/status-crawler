@@ -3,10 +3,7 @@ Please note the compatibility change for casperjs/phantomjs in their docs*
 
 # Spider for CasperJS
 
-As you probably already know.  [casperJS](http://casperjs.org/) is a library
-that wraps around, [phantomJS](http://phantomjs.org/).
-
-This script will crawl your site and log all urls, response codes, errors and warnings to a json file for parsing.
+This script uses [casperJS](http://casperjs.org/) to crawl your site and log all urls, response codes, errors and warnings to a json file for parsing.
 
 --------
 
