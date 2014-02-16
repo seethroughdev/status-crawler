@@ -59,6 +59,13 @@ There are several configuration options in casperjs-spider.  You can set them in
 - ```--skipped-values=mailto,install,\#,blog/,comment```
 - ```config.skippedValues = 'mailto,install,#,blog/,comment';```
 
+**limit**
+
+- Also defined as config.limit in spider.js.  This is a numeric limit to the links logged.
+- Enter 0, or omit for no limit.
+- ```--limit=25```
+- ```config.limit = 25```
+
 **file-location** *default=./logs/*
 
 - Also defined as config.fileLocation in spider.js.  This is a path to where you want the data.json file to be saved.
