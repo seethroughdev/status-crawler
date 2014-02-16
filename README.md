@@ -1,3 +1,6 @@
+* Fully refactored and tested with Casper 1.0.x and 1.1.x beta.
+Please note the compatibility change for casperjs/phantomjs in their docs *
+
 # Spider for CasperJS
 
 As you probably already know.  [casperJS](http://casperjs.org/) is an awesome library
@@ -22,13 +25,13 @@ This script will crawl your site and log all urls, response codes, errors and wa
 
 ### Getting Started
 
-You can run the whole thing by setting your config options in spider.js and navigating to the folder in your CL and typing:
+You can run the whole thing by setting your config options in config.js and navigating to the folder in your command line and typing:
 
 ``` casperjs spider.js```
 
 Or you can pass arguments directly into the command line like this:
 
-``` casperjs --start-url=http://espn.com --required-values=espn.com,nfl,fantasy spider.js ```
+``` casperjs --start-url=http://espn.go.com --required-values=espn.go.com,nfl,fantasy spider.js ```
 
 *Casper arguments go in the middle, and they will override config options in the script.*
 
@@ -40,65 +43,65 @@ There are several configuration options in casperjs-spider.  You can set them in
 
 **start-url** *\*required*
 
-- Also defined as config.startUrl in spider.js.  This is the starting URL for your spider to crawl.
-- ```--start-url=http://espn.com```
-- ```config.startUrl = 'http://espn.com';```
+- Also defined as config.startUrl in config.js.  This is the starting URL for your spider to crawl.
+- ```--start-url=http://espn.go.com```
+- ```config.startUrl = 'http://espn.go.com';```
 
 **required-values** *\*required*
 
-- Also defined as config.requiredValues in spider.js.  This is a comma-separated list of all required strings.
-- ```--required-values=espn.com```
-- ```config.requiredValues = 'espn.com';```
+- Also defined as config.requiredValues in config.js.  This is a comma-separated list of all required strings.
+- ```--required-values=espn.go.com```
+- ```config.requiredValues = 'espn.go.com';```
 - *Make sure you put your top-level domain in here to keep from spidering the internet!*
 - Leave off the protocol so it will allow for subdomains if you have them.
 
 **skipped-values**
 
-- Also defined as config.skippedValues in spider.js.  This is a comma-separated list of all skipped strings.
+- Also defined as config.skippedValues in config.js.  This is a comma-separated list of all skipped strings.
 - *It might be helpful to skip URLs like mailto, install, forums, blogs etc...*
 - ```--skipped-values=mailto,install,\#,blog/,comment```
 - ```config.skippedValues = 'mailto,install,#,blog/,comment';```
 
 **limit**
 
-- Also defined as config.limit in spider.js.  This is a numeric limit to the links logged.
+- Also defined as config.limit in config.js.  This is a numeric limit to the links logged.
 - Enter 0, or omit for no limit.
 - ```--limit=25```
 - ```config.limit = 25```
 
 **file-location** *default=./logs/*
 
-- Also defined as config.fileLocation in spider.js.  This is a path to where you want the data.json file to be saved.
+- Also defined as config.fileLocation in config.js.  This is a path to where you want the data.json file to be saved.
 - ```--file-location=./logs/```
 - ```config.fileLocation = './logs/';```
 
 **date-file-name** *default=false*
 
-- Also defined as config.dateFileName in spider.js.  This is a boolean to replace the filename data.json with the current date.  ie.  2013-12-22.json.  In case you want to keep versions.
+- Also defined as config.dateFileName in config.js.  This is a boolean to replace the filename data.json with the current date.  ie.  2013-12-22.json.  In case you want to keep versions.
 - ```--date-file-name=false```
 - ```config.dateFileName = false;```
 
 **verbose** *default=false*
 
-- Also defined as config.verbose in spider.js.  This is a boolean to put casper into verbose mode.
+- Also defined as config.verbose in config.js.  This is a boolean to put casper into verbose mode.
 - ```--verbose=false```
 - ```config.verbose = false;```
 
 **log-level** *default=error*
 
-- Also defined as config.logLevel in spider.js.  SpiderJS allows you to set a logging level. can be [error, warning, info, debug]
+- Also defined as config.logLevel in config.js.  SpiderJS allows you to set a logging level. can be [error, warning, info, debug]
 - ```--log-level=error```
 - ```config.logLevel = 'error';```
 
 **load-images** *default=false*
 
-- Also defined as config.loadImages in spider.js.  SpiderJS allows you to disable images from loading in the crawler.  This speeds up the crawl, and is generally not necessary for output.
+- Also defined as config.loadImages in config.js.  SpiderJS allows you to disable images from loading in the crawler.  This speeds up the crawl, and is generally not necessary for output.
 - ```--load-images=false```
 - ```config.loadImages = 'false';```
 
 **load-plugins** *default=false*
 
-- Also defined as config.loadPlugins in spider.js.  SpiderJS allows you to disable plugins from loading in the crawler.  This speeds up the crawl, and is generally not necessary for output.
+- Also defined as config.loadPlugins in config.js.  SpiderJS allows you to disable plugins from loading in the crawler.  This speeds up the crawl, and is generally not necessary for output.
 - ```--load-plugins=false```
 - ```config.loadPlugins = 'false';```
 
