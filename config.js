@@ -1,4 +1,4 @@
-(function(window,document,undefined){
+var config = (function(window,document,undefined){
 
   'use strict';
 
@@ -6,13 +6,13 @@
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'http://localhost:3000/';
+  config.startUrl = 'https://news.ycombinator.com/';
 
   // words to require for all urls ** put your top domain here to keep it local **
-  config.requiredValues = 'localhost';
+  config.requiredValues = 'ycombinator';
 
   // add any words that spider should skip
-  config.skippedValues = 'mailto, #, install, forums, download, comment';
+  config.skippedValues = 'vote, user';
 
   // set exported file location
   config.fileLocation = './logs/';
@@ -33,7 +33,9 @@
   config.loadPlugins = false;
 
 
-  exports.config = config;
+  return config;
 
 
 })(this, this.document);
+
+module.exports = config;
