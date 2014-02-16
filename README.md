@@ -27,11 +27,11 @@ Make sure you have [casperJS](http://casperjs.org/) and [phantomJS](http://phant
 
 Configure the script by setting your config options in config.js or passing arguments in the command line.
 
+In your terminal, navigate to the folder containing the spider.js file.
+
 Using config.js settings:
 
 ``` casperjs spider.js ```
-
-*// where spider.js is the path to spider.js*
 
 Configuring with arguments:
 
