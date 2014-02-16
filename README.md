@@ -29,7 +29,9 @@ Configure the script by setting your config options in config.js or passing argu
 
 Using config.js settings:
 
-``` casperjs spider.js // where spider.js is the path to spider.js```
+``` casperjs spider.js ```
+
+*// where spider.js is the path to spider.js*
 
 Configuring with arguments:
 
