@@ -1,5 +1,5 @@
 /*
- * casperjs-spider v 0.5.1
+ * casperjs-spider v 0.6.1
  * https://github.com/seethroughtrees/casperjs-spider
  *
  * Copyright (c) 2014 @seethroughtrees

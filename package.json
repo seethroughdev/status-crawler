@@ -1,11 +1,9 @@
 {
   "name": "casperjs-spider",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Use CasperJS to crawl sites and report issues.",
   "main": "config.js",
-  "dependencies": {
-    "casperjs": "~1.1.0-beta3"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "repository": {
     "type": "git",
