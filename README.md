@@ -29,11 +29,11 @@ Configure the script by setting your config options in config.js or passing argu
 
 In your terminal, navigate to the folder containing the spider.js file.
 
-Using config.js settings:
+- Using config.js settings:
 
 ``` casperjs spider.js ```
 
-Configuring with arguments:
+- Configuring with arguments:
 
 ``` casperjs --start-url=http://example.com --required-values=example.com spider.js ```
 
