@@ -55,6 +55,7 @@
   var dataObj = {
     start: casper.cli.get('start-url') || config.startUrl,
     date: new Date(),
+    dateFileName: casper.cli.get('date-file-name') || config.dateFileName,
     requiredValues: helpers.prepareArr(requiredValues),
     skippedValues: helpers.prepareArr(skippedValues),
     links: [],
@@ -204,15 +205,15 @@
     var filename;
 
     // set filename for logging
-    if (casper.cli.get('date-file-name')) {
-      filename = helpers.getFilename(fileLocation);
+    if (dataObj.dateFileName) {
+      filename = helpers.getFilename(fileLocation) + '-data.json';
     } else {
       filename = fileLocation + 'data.json';
     }
 
     dataObj.logFile = filename;
 
-    var data = JSON.stringify(dataObj);
+    var data = JSON.stringify(dataObj, undefined, 2);
 
     // write json file
     fs.write(filename, data, 'w');

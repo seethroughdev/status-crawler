@@ -48,7 +48,7 @@ function getFilename(fileLocation) {
 
   var filename = fileLocation;
 
-  filename += yyyy + '-' + mm + '-' + d + '.json';
+  filename += yyyy + '-' + mm + '-' + d;
 
   return filename;
 }

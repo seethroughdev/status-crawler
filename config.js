@@ -18,7 +18,7 @@ var config = (function(window,document,undefined){
   config.fileLocation = './logs/';
 
   // prepend date to filename
-  config.dateFileName = false;
+  config.dateFileName = true;
 
   // toggle verbose in command line
   config.verbose = false;
