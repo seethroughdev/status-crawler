@@ -81,65 +81,9 @@ exports.statusColor = statusColor;
 // prepare array
 function prepareArr(arr) {
   'use strict';
-
   arr = arr.replace(/ /g, '');
   arr = arr.split(',');
   return arr;
 }
 
 exports.prepareArr = prepareArr;
-
-// Add extra methods in case old browser per MDN.
-function addArrayMethods() {
-  'use strict';
-  // prototype taken from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
-  if (!Array.prototype.every) {
-    Array.prototype.every = function(fun /*, thisp */) {
-      var t, len, i, thisp;
-      if (this === null) {
-        throw new TypeError();
-      }
-      t = Object(this);
-      len = t.length >>> 0;
-      if (typeof fun !== 'function') {
-          throw new TypeError();
-      }
-      thisp = arguments[1];
-      for (i = 0; i < len; i++) {
-        if (i in t && !fun.call(thisp, t[i], i, t)) {
-          return false;
-        }
-      }
-      return true;
-    };
-  }
-
-  // prototype taken from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
-  if (!Array.prototype.some) {
-    Array.prototype.some = function(fun /*, thisp */) {
-
-      if (this === null) {
-        throw new TypeError();
-      }
-
-      var thisp, i,
-          t = Object(this),
-          len = t.length >>> 0;
-      if (typeof fun !== 'function') {
-        throw new TypeError();
-      }
-
-      thisp = arguments[1];
-      for (i = 0; i < len; i++) {
-        if (i in t && fun.call(thisp, t[i], i, t)) {
-          return true;
-        }
-      }
-
-      return false;
-    };
-  }
-  return;
-}
-
-exports.addArrayMethods = addArrayMethods;
