@@ -6,7 +6,7 @@ var config = (function(window,document,undefined){
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'http://example.com';
+  config.startUrl = 'http://example.com/';
 
   // words to require for all urls ** put your top domain here to keep it local **
   config.requiredValues = 'example.com';
@@ -35,6 +35,16 @@ var config = (function(window,document,undefined){
   // set limit for links logged (Enter 0 for unlimited.)
   config.limit = 0;
 
+  // ability to add a cookie
+  config.cookie = {
+    'name'     : 'example',    /* required property */
+    'value'    : 'example_text',    /* required property */
+    'domain'   : '.example.com',    /* required property */
+    'path'     : '/',
+    'httponly' : true,
+    'secure'   : true,
+    'expires'  : (new Date()).getTime() + (1000 * 60 * 60)
+  };
 
   return config;
 

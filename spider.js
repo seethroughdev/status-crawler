@@ -58,6 +58,7 @@
     dateFileName: casper.cli.get('date-file-name') || config.dateFileName,
     requiredValues: helpers.prepareArr(requiredValues),
     skippedValues: helpers.prepareArr(skippedValues),
+    cookie: JSON.parse(casper.cli.get('cookie')) || config.cookie,
     links: [],
     errors: [],
     messages: [],
@@ -73,6 +74,9 @@
 
     // Add the URL to visited stack
     visitedUrls.push(url);
+    
+    // Add cookie
+    casper.page.addCookie(dataObj.cookie);
 
     // Open the URL and modify
     casper.open(url).then(function() {
