@@ -6,10 +6,10 @@ var config = (function(window,document,undefined){
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'http://example.com';
+  config.startUrl = 'http://www.monkeytest1.com/home/';
 
   // words to require for all urls ** put your top domain here to keep it local **
-  config.requiredValues = 'example.com';
+  config.requiredValues = 'monkeytest1.com';
 
   // add any words that spider should skip (comma or space separated)
   config.skippedValues = 'default';
@@ -35,6 +35,15 @@ var config = (function(window,document,undefined){
   // set limit for links logged (Enter 0 for unlimited.)
   config.limit = 0;
 
+  // ability to add a cookie
+  config.cookie = {
+    'name'     : 'auth',    /* required property */
+    'value'    : 't_2FoKYwWvAmWFW0OFs_2FXQaZkDHQGyTF88IVkwV9fuLNq455KUjXjVHSU7xsVjmKA4N_2FviL_2FwgACuXE3sMDpYwvkQS9BgfeZbMbPeHdhz5K4jYrCMmSpORohcjNS3VWZ2RWWLchQmRt2v_2FpwnQyV_2F_2F0CxOTyCLq7_2FZzMCDwwigkG_2FbvO874bMe_2FF6ncnuzV3Ka',    /* required property */
+    'domain'   : '.monkeytest1.com',    /* required property */
+    'path'     : '/',
+    'httponly' : true,
+    'secure'   : true,
+  };
 
   return config;
 
