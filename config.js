@@ -6,10 +6,10 @@ var config = (function(window,document,undefined){
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'http://www.monkeytest1.com/home/';
+  config.startUrl = 'http://example.com/';
 
   // words to require for all urls ** put your top domain here to keep it local **
-  config.requiredValues = 'monkeytest1.com';
+  config.requiredValues = 'example.com';
 
   // add any words that spider should skip (comma or space separated)
   config.skippedValues = 'default';
