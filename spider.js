@@ -43,7 +43,6 @@
   var requiredValues = casper.cli.get('required-values') || config.requiredValues,
       skippedValues = casper.cli.get('skipped-values') || config.skippedValues,
       linkLimit     = casper.cli.get('limit') || config.limit;
-      
 
 
   // setting hard value for linkLimit so it doesn't go on forever
@@ -59,7 +58,7 @@
     dateFileName: casper.cli.get('date-file-name') || config.dateFileName,
     requiredValues: helpers.prepareArr(requiredValues),
     skippedValues: helpers.prepareArr(skippedValues),
-    cookie: casper.cli.get('cookie') || config.cookie,
+    cookie: JSON.parse(casper.cli.get('cookie')) || config.cookie,
     links: [],
     errors: [],
     messages: [],

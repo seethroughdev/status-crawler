@@ -37,12 +37,13 @@ var config = (function(window,document,undefined){
 
   // ability to add a cookie
   config.cookie = {
-    'name'     : 'auth',    /* required property */
-    'value'    : 't_2FoKYwWvAmWFW0OFs_2FXQaZkDHQGyTF88IVkwV9fuLNq455KUjXjVHSU7xsVjmKA4N_2FviL_2FwgACuXE3sMDpYwvkQS9BgfeZbMbPeHdhz5K4jYrCMmSpORohcjNS3VWZ2RWWLchQmRt2v_2FpwnQyV_2F_2F0CxOTyCLq7_2FZzMCDwwigkG_2FbvO874bMe_2FF6ncnuzV3Ka',    /* required property */
-    'domain'   : '.monkeytest1.com',    /* required property */
+    'name'     : 'example',    /* required property */
+    'value'    : 'example_text',    /* required property */
+    'domain'   : '.example.com',    /* required property */
     'path'     : '/',
     'httponly' : true,
     'secure'   : true,
+    'expires'  : (new Date()).getTime() + (1000 * 60 * 60)
   };
 
   return config;
