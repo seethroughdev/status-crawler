@@ -44,12 +44,21 @@
       skippedValues = casper.cli.get('skipped-values') || config.skippedValues,
       linkLimit     = casper.cli.get('limit') || config.limit;
 
-
   // setting hard value for linkLimit so it doesn't go on forever
   if (linkLimit === 0) {
     linkLimit = 10000;
   }
 
+  // Cookie Handling
+  var userCookie;
+
+  if (config.cookie) {
+    userCookie = config.cookie_data;
+  }
+
+  if (casper.cli.get('cookie')) {
+    userCookie = JSON.parse(casper.cli.get('cookie'));
+  }
 
   // Initializing Data Object
   var dataObj = {
@@ -58,7 +67,7 @@
     dateFileName: casper.cli.get('date-file-name') || config.dateFileName,
     requiredValues: helpers.prepareArr(requiredValues),
     skippedValues: helpers.prepareArr(skippedValues),
-    cookie: JSON.parse(casper.cli.get('cookie')) || config.cookie,
+    cookie: userCookie,
     links: [],
     errors: [],
     messages: [],
@@ -76,7 +85,9 @@
     visitedUrls.push(url);
     
     // Add cookie
-    casper.page.addCookie(dataObj.cookie);
+    if (dataObj.cookie) {
+        casper.page.addCookie(dataObj.cookie);
+    }
 
     // Open the URL and modify
     casper.open(url).then(function() {

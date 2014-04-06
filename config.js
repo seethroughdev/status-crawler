@@ -36,14 +36,15 @@ var config = (function(window,document,undefined){
   config.limit = 0;
 
   // ability to add a cookie
-  config.cookie = {
-    'name'     : 'example',    /* required property */
-    'value'    : 'example_text',    /* required property */
-    'domain'   : '.example.com',    /* required property */
-    'path'     : '/',
-    'httponly' : true,
-    'secure'   : true,
-    'expires'  : (new Date()).getTime() + (1000 * 60 * 60)
+  config.cookie = false; 
+  config.cookie_data = {
+    name     : 'example',         /* required property */
+    value    : 'example_text',    /* required property */
+    domain   : '.example.com',    /* required property */
+    path     : '/',
+    httponly : true,
+    secure   : true,
+    expires  : (new Date()).getTime()
   };
 
   return config;
