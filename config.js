@@ -6,7 +6,7 @@ var config = (function(window,document,undefined){
   var config = {};
 
   // Set starting point for crawl
-  config.startUrl = 'http://example.com/';
+  config.startUrl = 'http://example.com';
 
   // words to require for all urls ** put your top domain here to keep it local **
   config.requiredValues = 'example.com';
