@@ -49,15 +49,13 @@
     linkLimit = 10000;
   }
 
-  // Cookie Handling
+  // look for a command line cookie and then for a cookie in the config
   var userCookie;
-
-  if (config.cookie) {
-    userCookie = config.cookie_data;
-  }
-
+    
   if (casper.cli.get('cookie')) {
     userCookie = JSON.parse(casper.cli.get('cookie'));
+  } else if (config.cookie) {
+    userCookie = config.cookie_data;
   }
 
   // Initializing Data Object
