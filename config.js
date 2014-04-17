@@ -36,7 +36,6 @@ var config = (function(window,document,undefined){
   config.limit = 0;
 
   // ability to add a cookie
-  config.cookie = false; 
   config.cookie_data = {
     name     : 'example',         /* required property */
     value    : 'example_text',    /* required property */

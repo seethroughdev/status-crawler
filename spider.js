@@ -50,13 +50,22 @@
   }
 
   // look for a command line cookie and then for a cookie in the config
-  var userCookie;
-    
-  if (casper.cli.get('cookie')) {
-    userCookie = JSON.parse(casper.cli.get('cookie'));
-  } else if (config.cookie) {
-    userCookie = config.cookie_data;
+  var cookie = casper.cli.get('cookie');
+  if (typeof cookie === 'string') {
+    try {
+      console.log('attempt json');
+      cookie = JSON.parse(cookie);
+    } catch (e) {
+      casper.die('User defined cookie is not valid JSON.');
+    }
+  } else if (cookie === true) {
+    console.log('boolean cookie');
+    cookie = config.cookie_data;
+  } else {
+    cookie = false;
   }
+
+  console.log(cookie);
 
   // Initializing Data Object
   var dataObj = {
@@ -65,7 +74,7 @@
     dateFileName: casper.cli.get('date-file-name') || config.dateFileName,
     requiredValues: helpers.prepareArr(requiredValues),
     skippedValues: helpers.prepareArr(skippedValues),
-    cookie: userCookie,
+    cookie: cookie,
     links: [],
     errors: [],
     messages: [],
@@ -73,7 +82,6 @@
     logFile: '',
     linkCount: 1
   };
-
 
   // ##################  Spider Function  #################
 
@@ -84,7 +92,7 @@
     
     // Add cookie
     if (dataObj.cookie) {
-        casper.page.addCookie(dataObj.cookie);
+      casper.page.addCookie(dataObj.cookie);
     }
 
     // Open the URL and modify
