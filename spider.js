@@ -44,28 +44,27 @@
       skippedValues = casper.cli.get('skipped-values') || config.skippedValues,
       linkLimit     = casper.cli.get('limit') || config.limit;
 
+
   // setting hard value for linkLimit so it doesn't go on forever
   if (linkLimit === 0) {
     linkLimit = 10000;
   }
 
+
   // look for a command line cookie and then for a cookie in the config
   var cookie = casper.cli.get('cookie');
   if (typeof cookie === 'string') {
     try {
-      console.log('attempt json');
       cookie = JSON.parse(cookie);
     } catch (e) {
       casper.die('User defined cookie is not valid JSON.');
     }
   } else if (cookie === true) {
-    console.log('boolean cookie');
     cookie = config.cookie_data;
   } else {
     cookie = false;
   }
 
-  console.log(cookie);
 
   // Initializing Data Object
   var dataObj = {
@@ -82,6 +81,7 @@
     logFile: '',
     linkCount: 1
   };
+
 
   // ##################  Spider Function  #################
 
