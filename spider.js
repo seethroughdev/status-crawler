@@ -52,19 +52,17 @@
 
 
   // look for a command line cookie and then for a cookie in the config
-  var cookie = casper.cli.get('cookie');
-  if (typeof cookie === 'string') {
+  var cookie = false;
+
+  if (typeof casper.cli.get('cookie') === 'string') {
     try {
       cookie = JSON.parse(cookie);
     } catch (e) {
       casper.die('User defined cookie is not valid JSON.');
     }
-  } else if (cookie === true) {
+  } else if (casper.cli.get('cookie') === true) {
     cookie = config.cookie_data;
-  } else {
-    cookie = false;
   }
-
 
   // Initializing Data Object
   var dataObj = {
