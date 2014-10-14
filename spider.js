@@ -63,7 +63,8 @@
     messages: [],
     skippedLinksCount: 0,
     logFile: '',
-    linkCount: 1
+    linkCount: 1,
+    userAgent: casper.cli.get('user-agent') || config.userAgent
   };
 
 
@@ -73,6 +74,11 @@
 
     // Add the URL to visited stack
     visitedUrls.push(url);
+
+    // add userAgent if supplied
+    if (typeof dataObj.userAgent !== 'undefined') {
+      casper.userAgent(dataObj.userAgent);
+    }
 
     // Open the URL and modify
     casper.open(url).then(function() {

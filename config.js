@@ -35,6 +35,9 @@ var config = (function(window,document,undefined){
   // set limit for links logged (Enter 0 for unlimited.)
   config.limit = 0;
 
+  // override userAgent if necessary
+  config.userAgent = null;
+
 
   return config;
 

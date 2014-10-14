@@ -1,6 +1,6 @@
 {
   "name": "casperjs-spider",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Use CasperJS to crawl sites and report issues.",
   "main": "config.js",
   "dependencies": {},

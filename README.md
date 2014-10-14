@@ -73,6 +73,13 @@ There are several configuration options in casperjs-spider.  You can set them in
 - ```--limit=25```
 - ```config.limit = 25```
 
+**user-agent**
+
+- Also defined as config.userAgent in config.js.  You can supply a custom userAgent string.
+- Omit for default PhantomJS
+- ```--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X)```
+- ```config.userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X)'```
+
 **file-location** *default=./logs/*
 
 - Also defined as config.fileLocation in config.js.  This is a path to where you want the data.json file to be saved.
