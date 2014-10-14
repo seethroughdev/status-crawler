@@ -1,6 +1,3 @@
-*Fully refactored and tested with Casper 1.0.x and 1.1.x beta.
-Please note the compatibility change for casperjs/phantomjs in their docs*
-
 # Spider for CasperJS
 
 This script uses [casperJS](http://casperjs.org/) to crawl your site and log all urls, response codes, errors and warnings to a json file for parsing.
