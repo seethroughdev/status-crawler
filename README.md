@@ -77,8 +77,8 @@ There are several configuration options in casperjs-spider.  You can set them in
 
 - Also defined as config.userAgent in config.js.  You can supply a custom userAgent string.
 - Omit for default PhantomJS
-- ```--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X)```
-- ```config.userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X)'```
+- ```--user-agent="Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25"```
+- ```config.userAgent = 'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25'```
 
 **file-location** *default=./logs/*
 
