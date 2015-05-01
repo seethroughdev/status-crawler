@@ -224,6 +224,10 @@
     // write json file
     fs.write(filename, data, 'w');
 
+    if (typeof config.cb === 'function') {
+      config.cb(data);
+    }
+
     this.echo('Crawl has completed!', 'INFO');
     this.echo('Data file can be found at ' + filename + '.', 'INFO');
   });

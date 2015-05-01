@@ -113,7 +113,10 @@ There are several configuration options in casperjs-spider.  You can set them in
 - ```--load-plugins=false```
 - ```config.loadPlugins = 'false';```
 
+**cb** *default=null*
 
+- You can add your own callback if you're using the config file.  Just uncomment the config.cb function in the config.js file.  Or add your own after.
+- ```config.cb = function(data) {return data};```
 
 ### Contributing
 
