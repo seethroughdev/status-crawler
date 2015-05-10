@@ -1,7 +1,7 @@
 var config = {
-  startUrl: 'http://www.wufoo.com',
-  requiredValues: 'www.wufoo.com',
-  skippedValues: 'blog',
+  startUrl: 'https://www.surveymonkey.com',
+  requiredValues: 'https://www.surveymonkey.com, mp/',
+  skippedValues: 'aboutus',
   loadImages: false,
   loadPlugins: false,
   limit: 10000,
