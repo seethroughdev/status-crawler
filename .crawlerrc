@@ -1,6 +1,6 @@
 var config = {
   startUrl: 'https://www.surveymonkey.com',
-  requiredValues: 'https://www.surveymonkey.com, mp/',
+  requiredValues: 'https://www.surveymonkey.com',
   skippedValues: 'aboutus',
   loadImages: false,
   loadPlugins: false,
