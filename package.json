@@ -1,18 +1,52 @@
 {
-  "name": "casperjs-spider",
-  "version": "0.6.2",
-  "description": "Use CasperJS to crawl sites and report issues.",
-  "main": "config.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "name": "status-crawler",
+  "version": "1.0.0",
+  "description": "A configurable web crawler to check the status of your links and errors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/seethroughtrees/casperjs-spider.git"
+    "url": "git+https://github.com/seethroughtrees/status-crawler.git"
   },
-  "author": "seethroughtrees",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "bin": {
+    "crawler": "./bin/status-crawler.js"
+  },
+  "keywords": [
+    "cli",
+    "command-line",
+    "link-checker",
+    "status-checker",
+    "404",
+    "errors",
+    "crawler"
+  ],
+  "author": "seethroughtrees <seethroughtrees+npm@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/seethroughtrees/casperjs-spider/issues"
+    "url": "https://github.com/seethroughtrees/status-crawler/issues"
   },
-  "homepage": "https://github.com/seethroughtrees/casperjs-spider"
+  "homepage": "https://github.com/seethroughtrees/status-crawler#readme",
+  "devDependencies": {
+    "babel-eslint": "^3.1.1",
+    "eslint": "^0.21.0",
+    "jscs": "^1.13.1"
+  },
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "commander": "^2.8.1",
+    "interpret": "^0.5.2",
+    "liftoff": "^2.0.3",
+    "lodash": "^3.8.0",
+    "minimist": "^1.1.1",
+    "nightmare": "^1.8.1",
+    "object-assign": "^2.0.0",
+    "require-dir": "^0.3.0",
+    "v8flags": "^2.0.5",
+    "weak": "^0.4.1"
+  }
 }

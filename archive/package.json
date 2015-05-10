@@ -1,0 +1,18 @@
+{
+  "name": "casperjs-spider",
+  "version": "0.6.2",
+  "description": "Use CasperJS to crawl sites and report issues.",
+  "main": "config.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seethroughtrees/casperjs-spider.git"
+  },
+  "author": "seethroughtrees",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seethroughtrees/casperjs-spider/issues"
+  },
+  "homepage": "https://github.com/seethroughtrees/casperjs-spider"
+}

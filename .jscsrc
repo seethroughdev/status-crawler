@@ -1,0 +1,10 @@
+{
+    "preset": "airbnb",
+    "fileExtensions": [ ".js", "jscs", ".jsx" ],
+    "excludeFiles": [
+      "**/*.min.js", "**/*.debug.js", "build/*.js", "build/**/*.js"
+    ],
+    "disallowMultipleVarDecl": null,
+    "disallowMultipleLineBreaks": null,
+    "disallowQuotedKeysInObjects": null
+}
