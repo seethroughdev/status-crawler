@@ -1,15 +1,14 @@
 var config = {
-  startUrl: 'http://www.surveymonkey.com',
-  requiredValues: 'surveymonkey.com',
-  skippedValues: 'blog, demo',
-  loadImages: false,
-  loadPlugins: false,
-  limit: 30,
+  startUrl: 'https://www.monkeytest1.com/',
+  requiredValues: 'monkeytest1.com, mp',
+  skippedValues: '',
+  limit: 50,
   userAgent: null,
-  ignoreSslErrors: true,
-  timeout: null,
   onComplete: null,
   nightmare: {
+    loadImages: false,
+    ignoreSslErrors: true,
+    timeout: 500
   }
 };
 
