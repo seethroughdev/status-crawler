@@ -1,14 +1,16 @@
 var config = {
-  startUrl: 'https://www.surveymonkey.com',
-  requiredValues: 'https://www.surveymonkey.com',
-  skippedValues: 'aboutus',
+  startUrl: 'http://www.surveymonkey.com',
+  requiredValues: 'surveymonkey.com',
+  skippedValues: 'blog, demo',
   loadImages: false,
   loadPlugins: false,
-  limit: 10000,
+  limit: 30,
   userAgent: null,
   ignoreSslErrors: true,
   timeout: null,
-  onComplete: null
+  onComplete: null,
+  nightmare: {
+  }
 };
 
 module.exports = config;
