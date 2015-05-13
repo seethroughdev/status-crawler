@@ -1,6 +1,7 @@
 logs
 bower_components
 scripts/data/*
+/data-*
 
 
 ### /Users/flooky/.gitignore-boilerplates/Global/OSX.gitignore

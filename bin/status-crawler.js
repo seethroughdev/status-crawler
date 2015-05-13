@@ -4,7 +4,6 @@
 
 const Liftoff      = require('liftoff');
 const interpret    = require('interpret');
-const v8flags      = require('v8flags');
 const objectAssign = require('object-assign');
 const argv         = require('minimist')(process.argv.slice(2));
 const program      = require('commander');
@@ -39,14 +38,14 @@ const invoke    = function(env) {
   }
 
   // Run Script
-  lib.runScript(require(env.configPath), program);
+  lib(require(env.configPath), program);
 };
 
 const cli = new Liftoff({
   name: 'crawler',
   extensions: objectAssign({'rc': null}, interpret.jsVariants),
   configName: '.crawler',
-  v8flags: v8flags
+  v8flags: require('v8flags')
 });
 
 cli.launch({

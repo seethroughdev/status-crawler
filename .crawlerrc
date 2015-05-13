@@ -1,14 +1,11 @@
 var config = {
-  startUrl: 'https://www.monkeytest1.com/',
-  requiredValues: 'monkeytest1.com, mp',
-  skippedValues: '',
-  limit: 50,
+  startUrl: 'https://www.wustage.com/',
+  requiredValues: 'wustage.com',
+  skippedValues: 'blog',
+  limit: 5,
   userAgent: null,
   onComplete: null,
   nightmare: {
-    loadImages: false,
-    ignoreSslErrors: true,
-    timeout: 500
   }
 };
 
