@@ -2,7 +2,8 @@ var config = {
   startUrl: 'https://www.wustage.com/',
   requiredValues: 'wustage.com',
   skippedValues: 'blog',
-  limit: 5,
+  jsonPath: '.crawler/',
+  limit: 2,
   userAgent: null,
   onComplete: null,
   nightmare: {
