@@ -1,12 +1,13 @@
 var config = {
   startUrl: 'https://www.wustage.com/',
-  requiredValues: 'wustage.com',
-  skippedValues: 'blog',
+  requiredValues: 'www.wustage.com',
+  skippedValues: 'smart-captcha/, blog/',
   jsonPath: '.crawler/',
-  limit: 2,
+  limit: 20,
   userAgent: null,
   onComplete: null,
   nightmare: {
+    timeout: 1000
   }
 };
 

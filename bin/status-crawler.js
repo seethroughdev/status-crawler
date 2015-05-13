@@ -10,6 +10,7 @@ const program      = require('commander');
 const chalk        = require('chalk');
 const pkg          = require('../package.json');
 const lib          = require('../lib/index');
+const v8flags      = require('v8flags');
 
 program
   .version(pkg.version)
@@ -45,8 +46,9 @@ const cli = new Liftoff({
   name: 'crawler',
   extensions: objectAssign({'rc': null}, interpret.jsVariants),
   configName: '.crawler',
-  v8flags: require('v8flags')
+  v8flags: v8flags
 });
+
 
 cli.launch({
   cwd: argv.cwd,
