@@ -1,9 +1,10 @@
 var config = {
   startUrl: 'https://www.wustage.com/',
-  requiredValues: 'www.wustage.com',
+  requiredValues: '',
   skippedValues: 'smart-captcha/, blog/, paymentstatus.png',
   jsonPath: '.crawler/',
-  limit: 10,
+  sameHost: true,
+  limit: 50,
   hashMode: false,
   userAgent: null,
   onComplete: null,

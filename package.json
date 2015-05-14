@@ -48,6 +48,7 @@
     "minimist": "^1.1.1",
     "nightmare": "^1.8.1",
     "object-assign": "^2.0.0",
+    "parse-domain": "^0.1.2",
     "require-dir": "^0.3.0",
     "v8flags": "^2.0.5",
     "weak": "^0.4.1"
