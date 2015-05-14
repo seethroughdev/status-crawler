@@ -1,10 +1,10 @@
 var config = {
-  startUrl: 'https://www.wustage.com/',
+  startUrl: 'http://grantland.com/',
   requiredValues: '',
   skippedValues: 'smart-captcha/, blog/, paymentstatus.png',
   jsonPath: '.crawler/',
   sameHost: true,
-  limit: 5,
+  limit: 20,
   hashMode: false,
   userAgent: null,
   onComplete: null,
