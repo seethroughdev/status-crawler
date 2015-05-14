@@ -3,10 +3,12 @@ var config = {
   requiredValues: 'www.wustage.com',
   skippedValues: 'smart-captcha/, blog/, paymentstatus.png',
   jsonPath: '.crawler/',
-  limit: 200,
+  limit: 10,
   hashMode: false,
   userAgent: null,
   onComplete: null,
+  authUser: null,
+  authPass: null,
   nightmare: {
     timeout: 1000
   }
