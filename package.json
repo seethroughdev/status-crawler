@@ -1,11 +1,11 @@
 {
   "name": "status-crawler",
-  "version": "1.0.0",
+  "version": "0.9.5",
   "description": "A configurable web crawler to check the status of your links and errors",
-  "main": "index.js",
+  "main": "./bin/status-crawler.js",
   "scripts": {
     "start": "node ./bin/status-crawler.js",
-    "test": "mocha --recursive -c -R spec" 
+    "test": "mocha --recursive -c -R spec"
   },
   "repository": {
     "type": "git",
