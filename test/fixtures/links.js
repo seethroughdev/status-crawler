@@ -44,3 +44,50 @@ exports.pendingUrls = [
   'http://grantland.com/features/jamie-xx-in-colour/',
   'http://grantland.com/tags/music/'
 ];
+
+exports.statusCollection =  [
+  {
+    'url': 'https://www.grantland.com/demo',
+    'status': 301
+  },
+  {
+    'url': 'https://www.grantland.com/features',
+    'status': 302
+  },
+  {
+    'url': 'https://www.grantland.com/pricing',
+    'status': 404
+  },
+  {
+    'url': 'https://www.grantland.com/docs/',
+    'status': 301
+  },
+  {
+    'url': 'https://www.grantland.com/docs/api/v3/',
+    'status': 301
+  },
+  {
+    'url': 'https://www.grantland.com/signup/',
+    'status': 302
+  },
+  {
+    'url': 'https://www.grantland.com/docs/form-builder/field-settings/',
+    'status': 500
+  },
+  {
+    'url': 'https://www.grantland.com/docs/code-manager/',
+    'status': 404
+  },
+  {
+    'url': 'https://www.grantland.com/events/',
+    'status': 404
+  },
+  {
+    'url': 'https://www.grantland.com/tour/entries',
+    'status': 301
+  },
+  {
+    'url': 'https://www.grantland.com/support/',
+    'status': 301
+  }
+];

@@ -5,7 +5,8 @@
   "main": "./bin/status-crawler.js",
   "scripts": {
     "start": "node ./bin/status-crawler.js",
-    "test": "mocha --recursive -c -R spec"
+    "test": "mocha --recursive -c -R spec",
+    "test-watch": "mocha --recursive -c -R spec -w"
   },
   "repository": {
     "type": "git",

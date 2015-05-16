@@ -1,4 +1,5 @@
 const expect       = require('chai').expect;
+const _            = require('lodash');
 const links        = require('../../lib/links');
 const l            = require('../fixtures/links');
 const objectAssign = require('object-assign');
@@ -46,5 +47,28 @@ describe('links file', function () {
     });
 
   });
+
+  describe('status functions', function () {
+    var coll,
+        countStatusUrls = links.countStatusUrls,
+        getStatusTotals = links.getStatusTotals;
+
+    beforeEach(function () {
+      coll = l.statusCollection;
+    });
+
+    it('should countStatusUrls()', function () {
+      expect(countStatusUrls(coll, 301)).to.equal(5);
+      expect(countStatusUrls(coll, 404)).to.equal(3);
+      expect(countStatusUrls(coll, 302)).to.equal(2);
+      expect(countStatusUrls(coll, 599)).to.equal(0);
+    });
+
+    it('should getStatusTotals()', function () {
+      expect(getStatusTotals(coll)).to.eql(
+        { '301': 5, '302': 2, '404': 3, '500': 1 });
+    });
+  });
+
 
 });
