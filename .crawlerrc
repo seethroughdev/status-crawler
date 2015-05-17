@@ -8,6 +8,7 @@ const config = {
   limit: 5,
   hashMode: false,
   userAgent: null,
+  onPageLoad: null,
   onComplete: null,
   authUser: null,
   authPass: null,
