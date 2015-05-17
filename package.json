@@ -1,6 +1,6 @@
 {
   "name": "status-crawler",
-  "version": "0.9.5",
+  "version": "2.0.1",
   "description": "A configurable web crawler to check the status of your links and errors",
   "main": "./bin/status-crawler.js",
   "scripts": {
