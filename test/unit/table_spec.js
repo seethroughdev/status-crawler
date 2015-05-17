@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const tableCreate = require('../../lib/table-create');
+const tableCreate = require('../../lib/table');
 
 describe('table create', function() {
   it('should create table', function() {
