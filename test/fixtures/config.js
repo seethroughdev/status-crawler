@@ -15,7 +15,7 @@ exports.defaultOpts = {
   onStart: null,
   onPageLoad: null,
   onComplete: null,
-  nightmare: {
+  nightmarejs: {
     timeout: 5000,
     loadImages: false,
     ignoreSslErrors: true,
@@ -38,7 +38,7 @@ exports.config = {
   onStart: null,
   onPageLoad: null,
   onComplete: null,
-  nightmare: {
+  nightmarejs: {
     timeout: 5000,
     loadImages: true,
     ignoreSslErrors: true,
@@ -61,7 +61,7 @@ exports.opts = {
   onStart: null,
   onPageLoad: null,
   onComplete: null,
-  nightmare: {
+  nightmarejs: {
     timeout: 5000,
     loadImages: true,
     ignoreSslErrors: true,

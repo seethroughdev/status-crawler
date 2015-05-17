@@ -1,7 +1,7 @@
-var config = {
+const config = {
   startUrl: 'http://grantland.com/',
   requiredValues: '',
-  skippedValues: 'smart-captcha/, blog/, paymentstatus.png',
+  skippedValues: '',
   jsonPath: '.crawler/',
   sameHost: true,
   saveJson: true,
@@ -11,8 +11,7 @@ var config = {
   onComplete: null,
   authUser: null,
   authPass: null,
-  nightmare: {
-    timeout: 1000
+  nightmarejs: {
   }
 };
 

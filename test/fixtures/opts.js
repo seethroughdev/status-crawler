@@ -11,7 +11,7 @@ exports.config = {
   onComplete: null,
   authUser: null,
   authPass: null,
-  nightmare: {
+  nightmarejs: {
     timeout: 1000
   }
 };
@@ -35,7 +35,7 @@ exports.obj = {
   'onStart': null,
   'onPageLoad': null,
   'onComplete': null,
-  'nightmare': {
+  'nightmarejs': {
     'timeout': 1000,
     'loadImages': false,
     'ignoreSslErrors': true,

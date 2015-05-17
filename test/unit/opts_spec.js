@@ -10,7 +10,7 @@ describe('opts defaults', function() {
   });
 
   it('should have some basic keys', function() {
-    var keys = ['startUrl', 'requiredValues', 'limit', 'onPageLoad', 'nightmare'];
+    var keys = ['startUrl', 'requiredValues', 'limit', 'onPageLoad', 'nightmarejs'];
     keys.forEach(function(k) {
       expect(opts).to.include.keys(k);
     });
