@@ -1,18 +1,15 @@
 const config = {
-  startUrl: 'http://wustage.com/',
+  startUrl: 'http://www.example.com/',
   requiredValues: '',
   skippedValues: '',
   jsonPath: '.crawler/',
   sameHost: true,
   saveJson: true,
-  limit: 1000,
+  limit: 25,
   hashMode: false,
   userAgent: null,
-  onPageLoad: function() {
-    return {
-      canonical: document.querySelector('link[rel="canonical"]').getAttribute('href')
-    };
-  },
+  onStart: null,
+  onPageLoad: null,
   onComplete: null,
   authUser: null,
   authPass: null,
