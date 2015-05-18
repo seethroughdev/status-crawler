@@ -25,7 +25,7 @@ describe('data', function () {
     });
 
     it('should return data keys', function() {
-      var keys = ['links', 'errors', 'messages', 'issues', 'status', 'timeouts', 'resources'];
+      var keys = ['links', 'errors', 'messages', 'issues', 'status', 'timeouts', 'resources', 'custom'];
       expect(newObj.data[0]).to.have.all.keys(keys);
     });
 
