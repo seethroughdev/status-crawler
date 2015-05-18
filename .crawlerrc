@@ -1,29 +1,33 @@
+// This is the config file for status-crawler.
+// For complete documentation of all options and examples: =>
+// https://github.com/seethroughtrees/status-crawler
+
 const config = {
+
   startUrl: 'http://www.example.com/',
-  requiredValues: '',
-  skippedValues: '',
+  requiredValues: '', // {String} Comma separated.
+  skippedValues: '', // {String} Comma separated.
 
   // Crawl options
-  sameHost: true,
-  saveJson: '.crawler/',
-  limit: 25,
-  hashMode: false,
-  userAgent: null,
+  limit: 25, // {Number} Limit the total number of links crawled
+  saveJson: '.crawler/', // {String} Relative path to cwd()
+  hashMode: false, // {Boolean} Change this if you have a single-page app!
+  userAgent: null, // {String} Override useragent of crawler
+  sameHost: true, // {Boolean} Default true. (change this at your own risk!)
 
-  // Callbacks
-  onStart: null,
-  onPageLoad: null,
-  onComplete: null,
+  // Callbacks -- These can be tricky, see examples!
+  // https://github.com/seethroughtrees/status-crawler
+  onStart: null, // {Function} Called on crawl start.
+  onPageLoad: null, // {Function} Called inside browser on page.
+  onComplete: null, // {Function} Called after crawl is complete.
 
   // Add basic-auth
-  authUser: null,
-  authPass: null,
+  authUser: null, // {String}
+  authPass: null, // {String}
 
   // Native nightmarejs options
   // https://github.com/segmentio/nightmare#new-nightmareoptions
-  nightmarejs: {
-    webSecurity: false
-  }
+  nightmarejs: {}
 };
 
 module.exports = config;
