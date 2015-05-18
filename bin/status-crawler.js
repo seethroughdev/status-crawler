@@ -14,18 +14,27 @@ const v8flags      = require('v8flags');
 
 program
   .version(pkg.version)
-  .option('-v, --verbose', 'Tell me everything you know')
-  .option('--start-url [value]', 'URL you want to start crawling with')
-  .option('--required-values [value]', 'Text that must exist in URL to crawl (comma separated list)')
-  .option('--skipped-values [value]', 'If the URL contains this text, it will skip (comma separated list)')
-  .option('--log-level [value]', 'The amount of data that will be shown in the terminal')
-  .option('--load-images', 'This will slow down the crawler (default: false)')
-  .option('--load-plugins', 'This will slow down the crawler (default: false)')
-  .option('--user-agent [value]', 'Override the default user agent')
-  .option('--ignore-ssl-errors', 'Ignore SSL errors that might prevent loading of pages (default: true)')
-  .option('--timeout <n>', 'Time in ms to wait for page to load (default: 5000ms)', parseInt)
-  .option('--limit <n>', 'Limit the amount of links to be crawled (default: 10000)', parseInt)
-  .parse(process.argv);
+  .description('Where all the magic happens.')
+  .option('-v, --verbose', 'I wanna know everything.')
+  // .option('--start-url [value]', 'URL you want to start crawling with')
+  // .option('--required-values [value]', 'Text that must exist in URL to crawl (comma separated list)')
+  // .option('--skipped-values [value]', 'If the URL contains this text, it will skip (comma separated list)')
+  // .option('--load-images', 'This will slow down the crawler (default: false)')
+  // .option('--load-plugins', 'This will slow down the crawler (default: false)')
+  // .option('--user-agent [value]', 'Override the default user agent')
+  // .option('--ignore-ssl-errors', 'Ignore SSL errors that might prevent loading of pages (default: true)')
+  // .option('--timeout <n>', 'Time in ms to wait for page to load (default: 5000ms)', parseInt)
+  .option('-p, --path [value]', 'path to your config file if not in current or above cwd.')
+  .option('-l, --limit <n>', '[for testing] override the total links crawled.', parseInt)
+  .option('-s, --save-file [value]', '[for testing] turn off the json files being saved, or switch the directory')
+
+program
+  .command('init')
+  .description('Create a fresh config file to start your crawl.')
+  .option('-f, --force', 'Override existing .crawlerrc')
+  .option('-c, --coffee', 'Create the config file in coffeescript instead.');
+
+program.parse(process.argv);
 
 const invoke    = function(env) {
   // console.log('my environment is:', env);
@@ -39,7 +48,9 @@ const invoke    = function(env) {
   }
 
   // Run Script
-  lib(require(env.configPath), program);
+  if (program.args.length === 0) {
+    lib(require(env.configPath), program);
+  }
 };
 
 const cli = new Liftoff({
