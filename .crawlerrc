@@ -1,17 +1,16 @@
 const config = {
-  startUrl: 'http://grantland.com/',
+  startUrl: 'http://wustage.com/',
   requiredValues: '',
   skippedValues: '',
   jsonPath: '.crawler/',
   sameHost: true,
   saveJson: true,
-  limit: 500,
+  limit: 1000,
   hashMode: false,
   userAgent: null,
   onPageLoad: function() {
     return {
-      canonical: document.querySelector('link[rel="canonical"]').getAttribute('href'),
-      description: document.querySelector('meta[name="description"]').getAttribute('content')
+      canonical: document.querySelector('link[rel="canonical"]').getAttribute('href')
     };
   },
   onComplete: null,

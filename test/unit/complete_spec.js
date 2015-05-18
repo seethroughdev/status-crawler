@@ -1,6 +1,8 @@
 const expect = require('chai').expect;
 const complete = require('../../lib/complete');
 const obj       = require('../fixtures/data').data;
+const opts = require('../fixtures/opts').obj;
+const objectAssign = require('object-assign');
 
 describe('complete', function() {
 
@@ -11,26 +13,22 @@ describe('complete', function() {
     });
 
     it('should return an object', function() {
-      expect(complete.onComplete(obj)).to.be.an('object');
+      expect(complete.onComplete(obj, opts)).to.be.an('object');
     });
 
     describe('callbacks', function() {
-      var newObj, callback;
+      var newObj, newOpts;
 
       beforeEach(function () {
+        newOpts = objectAssign({}, opts);
         newObj = null;
-        callback = function(cb) {
+        newOpts.onComplete = function(cb) {
           newObj = cb;
         };
       });
 
       it('should call the callback', function() {
-        complete.onComplete(obj, 'asdf', callback);
-        expect(newObj).to.be.an('object');
-      });
-
-      it('should call callback even if no jsonLocation', function() {
-        complete.onComplete(obj, callback);
+        complete.onComplete(obj, newOpts);
         expect(newObj).to.be.an('object');
       });
 
