@@ -5,14 +5,20 @@ const config = {
   jsonPath: '.crawler/',
   sameHost: true,
   saveJson: true,
-  limit: 5,
+  limit: 500,
   hashMode: false,
   userAgent: null,
-  onPageLoad: null,
+  onPageLoad: function() {
+    return {
+      canonical: document.querySelector('link[rel="canonical"]').getAttribute('href'),
+      description: document.querySelector('meta[name="description"]').getAttribute('content')
+    };
+  },
   onComplete: null,
   authUser: null,
   authPass: null,
   nightmarejs: {
+    webSecurity: false
   }
 };
 
