@@ -2,17 +2,25 @@ const config = {
   startUrl: 'http://www.example.com/',
   requiredValues: '',
   skippedValues: '',
-  jsonPath: '.crawler/',
+
+  // Crawl options
   sameHost: true,
-  saveJson: true,
+  saveJson: '.crawler/',
   limit: 25,
   hashMode: false,
   userAgent: null,
+
+  // Callbacks
   onStart: null,
   onPageLoad: null,
   onComplete: null,
+
+  // Add basic-auth
   authUser: null,
   authPass: null,
+
+  // Native nightmarejs options
+  // https://github.com/segmentio/nightmare#new-nightmareoptions
   nightmarejs: {
     webSecurity: false
   }
