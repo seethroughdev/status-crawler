@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
-
 const Liftoff      = require('liftoff');
 const interpret    = require('interpret');
 const objectAssign = require('object-assign');
