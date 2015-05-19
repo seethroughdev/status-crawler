@@ -26,8 +26,8 @@ program
   // .option('--ignore-ssl-errors', 'Ignore SSL errors that might prevent loading of pages (default: true)')
   // .option('--timeout <n>', 'Time in ms to wait for page to load (default: 5000ms)', parseInt)
   .option('-p, --path [value]', 'path to your config file if not in current or above cwd.')
-  .option('-l, --limit <n>', '[for testing] override the total links crawled.', parseInt)
-  .option('-s, --save-file [value]', '[for testing] turn off the json files being saved, or switch the directory')
+  .option('-l, --limit <n>', '[debug] override the total links crawled.', parseInt)
+  .option('-s, --save-file [value]', '[debug] turn off the json files being saved, or switch the directory')
 
 program
   .command('init')
