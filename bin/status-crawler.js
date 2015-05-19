@@ -10,6 +10,7 @@ const program      = require('commander');
 const chalk        = require('chalk');
 const pkg          = require('../package.json');
 const lib          = require('../lib/index');
+const file         = require('../lib/file');
 const v8flags      = require('v8flags');
 
 program
@@ -32,7 +33,10 @@ program
   .command('init')
   .description('Create a fresh config file to start your crawl.')
   .option('-f, --force', 'Override existing .crawlerrc')
-  .option('-c, --coffee', 'Create the config file in coffeescript instead.');
+  .option('-c, --coffee', 'Create the config file in coffeescript instead.')
+  .action(function() {
+    file.createConfig();
+  });
 
 program.parse(process.argv);
 
@@ -42,8 +46,9 @@ const invoke    = function(env) {
   // console.log('my liftoff config is:', this);
 
   // If there is no config, throw error
-  if (!env.configPath) {
+  if (!env.configPath && program.args.length === 0) {
     console.log(chalk.red('No config file found'));
+    console.log('To create a config, use: ', chalk.yellow('crawler init'));
     process.exit(1);
   }
 
