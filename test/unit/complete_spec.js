@@ -40,6 +40,7 @@ describe('complete', function() {
 
     it('should showCompleteMsg()', function() {
       expect(complete.showCompleteMsg).to.be.a('function');
+      expect(complete.showCompleteMsg).to.be.defined;
     });
 
     it('should return a string', function() {
