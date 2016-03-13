@@ -32,13 +32,16 @@
   });
 
   // Echo options hash to screen
-  utils.dump(casper.cli.options);
+  if (config.logLevel != 'error') {
+      utils.dump(casper.cli.options);
+  }
 
   // ##################  Initializing Vars  #################
 
   // URL arrays
   var visitedUrls = [], pendingUrls = [], skippedUrls = [];
-
+  var times = [];
+  
   // required and skipped values
   var requiredValues = casper.cli.get('required-values') || config.requiredValues,
       skippedValues = casper.cli.get('skipped-values') || config.skippedValues,
@@ -60,6 +63,7 @@
     skippedValues: helpers.prepareArr(skippedValues),
     links: [],
     errors: [],
+    times: [],
     messages: [],
     skippedLinksCount: 0,
     logFile: '',
@@ -89,7 +93,11 @@
       var status = this.status().currentHTTPStatus;
 
       // Log url
-      this.echo(this.colorizer.format(status, helpers.statusColor(status)) + ' ' + url);
+      if(status >= 400) {
+          this.echo("* " + this.colorizer.format(status, helpers.statusColor(status)) + ' ' + url);
+      } else {
+          this.echo("  " + this.colorizer.format(status, helpers.statusColor(status)) + ' ' + url);
+      }
 
       // Instantiate link object for log
       var link = {
@@ -180,10 +188,10 @@
       func: trace[0]['function']
     };
 
-    this.log('ERROR: ' + error.msg, 'error');
-    this.log('file: ' + error.file, 'warning');
-    this.log('line: ' + error.line, 'warning');
-    this.log('function: ' + error.func, 'warning');
+    this.echo('* ERROR: ' + error.msg, 'error');
+    this.echo('    file: ' + error.file, 'warning');
+    this.echo('    line: ' + error.line, 'warning');
+    this.echo('    function: ' + error.func, 'warning');
 
     dataObj.errors.push(error);
   });
@@ -203,6 +211,19 @@
     this.log('INTERNAL ERROR: ' + msg, 'ERROR' );
     this.log('BACKTRACE:' + backtrace, 'WARNING');
     this.die('Crawl stopped because of errors.');
+  });
+  
+  // Find the longuest request
+  casper.on('resource.requested', function(resource) {
+      times[resource.id] = {
+          start: new Date().getTime(),
+          url: resource.url
+      };
+  });
+  casper.on('resource.received', function(resource) {
+      times[resource.id].time = new Date().getTime() - times[resource.id].start;
+      times[resource.id].status =  resource.status;
+      dataObj.times.push(times[resource.id]);
   });
 
   // after crawl is complete, write json file with results
@@ -227,7 +248,15 @@
     if (typeof config.cb === 'function') {
       config.cb(data);
     }
-
+    
+    // Find the longest request.
+    var longest = times.sort(function(reqa, reqb) {
+        return reqb.time - reqa.time;
+    })[0];
+    this.echo('', 'INFO');
+    this.echo(utils.format('Longest request: %s (%s) with %dms', longest.url, longest.status, longest.time), 'INFO');
+    this.echo('', 'INFO');
+    
     this.echo('Crawl has completed!', 'INFO');
     this.echo('Data file can be found at ' + filename + '.', 'INFO');
   });
