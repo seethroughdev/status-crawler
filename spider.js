@@ -41,6 +41,7 @@
   // URL arrays
   var visitedUrls = [], pendingUrls = [], skippedUrls = [];
   var times = [];
+  var visitedResourceUrls = [];
   
   // required and skipped values
   var requiredValues = casper.cli.get('required-values') || config.requiredValues,
@@ -221,9 +222,19 @@
       };
   });
   casper.on('resource.received', function(resource) {
-      times[resource.id].time = new Date().getTime() - times[resource.id].start;
-      times[resource.id].status =  resource.status;
-      dataObj.times.push(times[resource.id]);
+      if (resource.stage == 'end') {
+          times[resource.id].time = new Date().getTime() - times[resource.id].start;
+          times[resource.id].status =  resource.status;
+          dataObj.times.push(times[resource.id]);
+          if (visitedUrls.indexOf(resource.url) == -1 && visitedResourceUrls.indexOf(resource.url) == -1) {
+              visitedResourceUrls.push(resource.url);
+              if(resource.status >= 400) {
+                  casper.echo("* " + this.colorizer.format(resource.status, helpers.statusColor(resource.status)) + ' ' + resource.url);
+              } else {
+                  casper.echo("  " + this.colorizer.format(resource.status, helpers.statusColor(resource.status)) + ' ' + resource.url);
+              }
+          }
+      }
   });
 
   // after crawl is complete, write json file with results
