@@ -40,10 +40,18 @@ var config = (function(window,document,undefined){
 
   // uncomment this function to provide a callback for the data
   // config.cb = function(data) {
-  //   console.log(data);
-  // };
-  // eof callback
+  // }
 
+  // ability to add a cookie
+  config.cookie_data = {
+    name     : 'example',         /* required property */
+    value    : 'example_text',    /* required property */
+    domain   : '.example.com',    /* required property */
+    path     : '/',
+    httponly : true,
+    secure   : true,
+    expires  : (new Date()).getTime()
+  };
 
   return config;
 
