@@ -35,6 +35,16 @@ var config = (function(window,document,undefined){
   // set limit for links logged (Enter 0 for unlimited.)
   config.limit = 0;
 
+  // ability to add a cookie
+  config.cookie_data = {
+    name     : 'example',         /* required property */
+    value    : 'example_text',    /* required property */
+    domain   : '.example.com',    /* required property */
+    path     : '/',
+    httponly : true,
+    secure   : true,
+    expires  : (new Date()).getTime()
+  };
 
   return config;
 

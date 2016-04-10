@@ -51,6 +51,19 @@
   }
 
 
+  // look for a command line cookie and then for a cookie in the config
+  var cookie = false;
+
+  if (typeof casper.cli.get('cookie') === 'string') {
+    try {
+      cookie = JSON.parse(cookie);
+    } catch (e) {
+      casper.die('User defined cookie is not valid JSON.');
+    }
+  } else if (casper.cli.get('cookie') === true) {
+    cookie = config.cookie_data;
+  }
+
   // Initializing Data Object
   var dataObj = {
     start: casper.cli.get('start-url') || config.startUrl,
@@ -58,6 +71,7 @@
     dateFileName: casper.cli.get('date-file-name') || config.dateFileName,
     requiredValues: helpers.prepareArr(requiredValues),
     skippedValues: helpers.prepareArr(skippedValues),
+    cookie: cookie,
     links: [],
     errors: [],
     messages: [],
@@ -73,6 +87,11 @@
 
     // Add the URL to visited stack
     visitedUrls.push(url);
+    
+    // Add cookie
+    if (dataObj.cookie) {
+      casper.page.addCookie(dataObj.cookie);
+    }
 
     // Open the URL and modify
     casper.open(url).then(function() {
