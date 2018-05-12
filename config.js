@@ -38,6 +38,9 @@ var config = (function(window,document,undefined){
   // override userAgent if necessary
   config.userAgent = null;
 
+  // override request headers for HTTP Auth by setting the base64 encoded username:credentials here.
+  config.httpAuth = null;
+
   // uncomment this function to provide a callback for the data
   // config.cb = function(data) {
   // }

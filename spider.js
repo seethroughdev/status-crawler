@@ -21,14 +21,22 @@
 
   // ##################  WORKING CODE  #################
 
+  var settings = {
+    loadImages: config.loadImages,
+    loadPlugins: config.loadPlugins
+  }
+
+  if (config.httpAuth != null) {
+    settings.customHeaders = {
+      'Authorization': 'Basic ' + config.httpAuth
+    }
+  }
+
   // Create Casper
   var casper = require('casper').create({
     verbose: config.verbose,
     logLevel: config.logLevel,
-    pageSettings: {
-      loadImages: config.loadImages,
-      loadPlugins: config.loadPlugins
-    }
+    pageSettings: settings
   });
 
   // Echo options hash to screen
@@ -42,7 +50,7 @@
   var visitedUrls = [], pendingUrls = [], skippedUrls = [];
   var times = [];
   var visitedResourceUrls = [];
-  
+
   // required and skipped values
   var requiredValues = casper.cli.get('required-values') || config.requiredValues,
       skippedValues = casper.cli.get('skipped-values') || config.skippedValues,
@@ -93,7 +101,7 @@
 
     // Add the URL to visited stack
     visitedUrls.push(url);
-    
+
     // Add cookie
     if (dataObj.cookie) {
       casper.page.addCookie(dataObj.cookie);
@@ -232,7 +240,7 @@
     this.log('BACKTRACE:' + backtrace, 'WARNING');
     this.die('Crawl stopped because of errors.');
   });
-  
+
   // Find the longuest request
   casper.on('resource.requested', function(resource) {
       times[resource.id] = {
@@ -278,7 +286,7 @@
     if (typeof config.cb === 'function') {
       config.cb(data);
     }
-    
+
     // Find the longest request.
     var longest = times.sort(function(reqa, reqb) {
         return reqb.time - reqa.time;
@@ -286,7 +294,7 @@
     this.echo('', 'INFO');
     this.echo(utils.format('Longest request: %s (%s) with %dms', longest.url, longest.status, longest.time), 'INFO');
     this.echo('', 'INFO');
-    
+
     this.echo('Crawl has completed!', 'INFO');
     this.echo('Data file can be found at ' + filename + '.', 'INFO');
   });
